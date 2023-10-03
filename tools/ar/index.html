@@ -1,0 +1,38 @@
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
+<script src="/cithara/songs/songs.js"></script>
+<a-scene mindar-image="imageTargetSrc: /cithara/songs/arDatabase/targets.mind; autoStart: false"
+    vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false;">
+    <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+</a-scene>
+<script>
+
+    const scene = document.querySelector("a-scene");
+    let system;
+
+    songs.forEach((song, index) => {
+        let i = (index + 1).toString().padStart(3, '0');
+
+        const target = document.createElement("a-entity");
+
+        const targetAttribute = document.createAttribute("mindar-image-target");
+        targetAttribute.value = "targetIndex: " + index;
+
+        target.setAttributeNode(targetAttribute);
+
+        target.addEventListener("targetFound", () => {
+            setTimeout(() => window.location.href = "/cithara/songs/song.html#" + i, 1000)
+        })
+
+        scene.appendChild(target);
+
+    })
+
+    scene.addEventListener("loaded", () => {
+        system = scene.systems["mindar-image-system"];
+
+        system.start();
+    })
+
+</script>

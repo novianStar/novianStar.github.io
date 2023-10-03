@@ -1,0 +1,47 @@
+:root {
+    --white:    #f8f8fd;
+    --lightgray:#e8e8ed;
+    --red:      #ff6961;
+    --orange:   #ffb480;
+    --yellow:   #f8f38d;
+    --green:    #42d6a4;
+    --cyan:     #08cad1;
+    --blue:     #59adf6;
+    --violet:   #9d94ff;
+    --purple:   #c780e8;
+    --gray:     #3b3f5a;
+    --black:    #2b2f4a;
+}
+@font-face {
+    font-family: "Poppins";
+    src: url("/cithara/assets/fonts/Poppins.ttf");
+}
+* {
+    padding: 0;
+    margin: 0;
+
+    box-sizing: border-box;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+ul {
+    list-style: none;
+}
+body {
+    color: var(--black);
+    font-family: "Poppins";
+}
+.start {
+    justify-content: start;
+}
+.center {
+    justify-content: center;
+}
+.end {
+    justify-content: end;
+}
+.red-background {
+    background-color: var(--red);
+}

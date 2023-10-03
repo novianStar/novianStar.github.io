@@ -1,0 +1,33 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<video id="scanner" width="240" height="240"></video>
+<div id="result">Bob</div>
+<button id="start">Start</button>
+<script type="module">
+    import QrScanner from "/node_modules/qr-scanner/qr-scanner.min.js";
+
+    const resultOutput = document.getElementById("result");
+
+    const qrScanner = new QrScanner(
+        document.getElementById("scanner"),
+        result => {
+            window.location.href = result;
+        }
+    );
+
+    let isScanning = false;
+
+    const start = document.getElementById("start");
+    start.addEventListener("click", function() {
+        if (isScanning) {
+            qrScanner.stop();
+
+            isScanning = false;
+        } else {
+            qrScanner.start();
+
+            isScanning = true;
+        }
+
+        start.textContent = isScanning ? "Stop" : "Start";
+    });
+</script>
