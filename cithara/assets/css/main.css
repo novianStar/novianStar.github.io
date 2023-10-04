@@ -1,5 +1,5 @@
 :root {
-    --white:    #f8f8fd;
+    --white:    #ffffff;
     --lightgray:#e8e8ed;
     --red:      #ff6961;
     --orange:   #ffb480;
@@ -9,8 +9,17 @@
     --blue:     #59adf6;
     --violet:   #9d94ff;
     --purple:   #c780e8;
-    --gray:     #3b3f5a;
+    --gray:     #5b5f7a;
     --black:    #2b2f4a;
+
+    --shadow-1-1: rgba(43, 47, 74, 1);
+    --shadow-3-4: rgba(43, 47, 74, 0.75);
+    --shadow-1-2: rgba(43, 47, 74, 0.5);
+    --shadow-1-4: rgba(43, 47, 74, 0.25);
+    --shadow-1-8: rgba(43, 47, 74, 0.125);
+    --shadow-1-16: rgba(43, 47, 74, 0.0625);
+    --shadow-1-32: rgba(43, 47, 74, 0.0375);
+    --shadow-1-64: rgba(43, 47, 74, 0.01875);
 }
 @font-face {
     font-family: "Poppins";
@@ -33,15 +42,102 @@ body {
     color: var(--black);
     font-family: "Poppins";
 }
-.start {
-    justify-content: start;
+/*                  */
+/*  Song Container  */
+/*                  */
+section#song-container {
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 3.5rem);
+    margin-top: 3.5rem;
+    overflow: hidden;
 }
-.center {
+section#song-container > .page {
+    white-space: nowrap;
+    flex-basis: 0;
+    flex-wrap: nowrap;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    transition: flex-basis 1000ms ease;
+}
+section#song-container > .page.active {
+    flex-basis: 100%;
+}
+section#song-container .page.overview {
+    display: grid;
+    grid-template-areas: "desc details";
+    grid-template-columns: 192px 1fr;
+    gap: 1rem;
+}
+section#song-container > .page.overview > .description,
+section#song-container > .page.overview > .details {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+    border-radius: 0.25rem;
+}
+section#song-container > .page.overview > .description {
+    grid-area: desc;
+}
+section#song-container > .page.overview > .details {
+    grid-area: details;
+}
+section#song-container > .page.overview > .description > img {
+    width: 100%;
+    border-radius: 0.5rem;
+    object-fit: cover;
+}
+section#song-container > .page.overview > .description > .links {
+    display: flex;
+    align-items: center;
     justify-content: center;
+    gap: 1rem;
 }
-.end {
-    justify-content: end;
+section#song-container > .page.overview > .description > .links > a {
+    width: 2rem;
 }
-.red-background {
+section#song-container > .page.overview > .description > .links > a > img {
+    width: 100%;
+}
+section#song-container > .page.overview > .details #title {
+    font-size: 2rem;
+    font-weight: bold;
+}
+section#song-container > .page.overview > .details #author {
+    font-size: 0.75rem;
+    font-weight: normal;
+    color: var(--gray);
+}
+section#song-container > .page.overview > .details p {
+    font-size: 0.75rem;
+}
+
+
+
+
+
+.margin-nav {
+    margin-top: 3.5rem;
+}
+.red-bg {
     background-color: var(--red);
+}
+.white-bg {
+    background-color: var(--white);
+}
+.light-gray-bg {
+    background-color: var(--lightgray);
+}
+.shadow-1-4-bg {
+    background-color: var(--shadow-1-4);
+}
+.shadow-1-8-bg {
+    background-color: var(--shadow-1-8);
+}
+.shadow-1-16-bg {
+    background-color: var(--shadow-1-16);
+}
+.shadow-1-32-bg {
+    background-color: var(--shadow-1-32);
 }

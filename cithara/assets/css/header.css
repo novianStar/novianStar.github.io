@@ -1,138 +1,51 @@
-/*  Main */
-header {
+/*  Navigationbar */
+nav {
     font-family: "Poppins", sans-serif;
 }
-header .topbar {
+nav > .nav-top-bar {
     display: flex;
     position: fixed;
-    justify-content: space-between;
     top: 0;
     left: 0;
     width: 100vw;
     height: 3.5rem;
 }
-.topbar > ul {
+nav > .nav-top-bar > ul {
     display: flex;
-    position: relative;
 }
-.topbar > ul.center {
-    flex: 1;
+nav > .nav-top-bar > .center {
+    width: 100%;
 }
-.topbar > ul.end {
-    flex-direction: row-reverse;
-}
-.topbar > ul > .item {
+nav > .nav-top-bar > ul > li.button {
     display: flex;
     align-items: center;
     justify-content: center;
     min-width: 2.5rem;
     padding: 0.5rem;
     margin: 0.5rem;
-    gap: 0.5rem;
+    gap: 1rem;
+    background-color: var(--shadow-1-8);
     border-radius: 1.25rem;
+    cursor: pointer;
 }
-.topbar > ul > .item > span {
+nav > .nav-top-bar > ul > li.button.active,
+nav > .nav-top-bar > ul > li.button:hover {
+    background-color: var(--blue);
+}
+nav > .nav-top-bar > ul > li.tab {
     display: flex;
+    width: 100%;
     align-items: center;
     justify-content: center;
-}
-.topbar > ul > .item.button {
-    background-color: var(--lightgray);
-    cursor: pointer;
-}
-.topbar > ul > .item.button.active, 
-.topbar > ul > .item.button:hover {
-    background-color: var(--blue);
-    cursor: pointer;
-}
-.topbar > ul > .item.home {
-    width: 2.5rem;
-    padding: 0.375rem;
-    background-color: var(--black);
-    cursor: pointer;
-}
-.topbar > ul > .item.home img {
-    width: 100%;
-}
-/* --- Searchbar --- */
-.topbar > ul > .item.searchbar {
-    align-items: normal;
-    justify-content: right;
     position: relative;
-    min-width: 10rem;
-    width: 100%;
-    max-width: 20rem;
-    padding: 0;
-    gap: 0;
-    border: 2px solid var(--lightgray);
-    overflow: hidden;
-}
-.topbar > ul > .item.searchbar > * {
-    appearance: none;
-    background-color: transparent;
-    border: none;
-    outline: none;
     min-width: 2.5rem;
-    height: 100%;
-    padding: 0.5rem;
-}
-.topbar > ul > .item.searchbar > input[type=text] {
-    font-family: "Poppins";
-    width: 100%;
-    padding: 0.5rem 1rem;
-}
-.topbar > ul > .item.searchbar > .clear {
-    display: none;
-    cursor: pointer;
-}
-.topbar > ul > .item.searchbar > .clear.active {
-    display: flex;
-}
-.topbar > ul > .item.searchbar > .clear:hover {
-    color: var(--red);
-}
-.topbar > ul > .item.searchbar > .search {
-    padding: 0.5rem 0.75rem;
-    background-color: var(--lightgray);
-}
-.topbar > ul > .item.searchbar > .search:hover {
-    background-color: var(--blue);
-    cursor: pointer;
-}
-.topbar > ul > .search-result {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translate(-50%, 0);
-    padding: 0.5rem 0;
-    width: 20rem;
-    background-color: var(--lightgray);
-    border-radius: 0.5rem;
-    z-index: 1000;
-}
-.topbar > ul > .search-result.active {
-    display: flex;
-}
-.topbar > ul > .search-result > .result > a {
-    display: flex;
-    width: 100%;
-    height: 3.5rem;
-    padding: 0.5rem;
+    padding: 0.5rem 1rem 1rem 1rem;
+    margin: 0.5rem 0.25rem 0 0.25rem;
     gap: 1rem;
+    border-radius: 0.75rem 0.75rem 0 0;
     cursor: pointer;
 }
-.topbar > ul > .search-result > .result:hover {
+nav > .nav-top-bar > ul > li.tab.active,
+nav > .nav-top-bar > ul > li.tab:hover {
     background-color: var(--white);
 }
-.topbar > ul > .search-result > .result > a .image {
-    width: 2.5rem;
-    border-radius: 0.25rem;
-}
-.topbar > ul > .search-result > .result > a .name {
-    display: flex;
-    align-items: center;
-    flex: 1;
-}
-/* --- Searchbar --- */

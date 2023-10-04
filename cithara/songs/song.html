@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/8e7dc2ee26.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/cithara/assets/css/main.css">
+    <link rel="stylesheet" href="/cithara/assets/css/header.css">
+    <title>Song Name</title>
+</head>
+<body>
+    <nav>
+        <div class="nav-top-bar light-gray-bg">
+            <ul class="start">
+                <li class="button">
+                    <span><i class="fa-solid fa-arrow-left"></i></span>
+                </li>
+            </ul>
+            <ul class="center">
+                <li class="tab">
+                    <span>Overview</span>
+                </li>
+                <li class="tab">
+                    <span>Lyric</span>
+                </li>
+                <li class="tab">
+                    <span>Chord</span>
+                </li>
+                <li class="tab">
+                    <span>Video</span>
+                </li>
+            </ul>
+            <ul class="end">
+                <li class="button">
+                    <span><i class="fa-solid fa-expand"></i></span>
+                </li>
+                <li class="button">
+                    <span><i class="fa-solid fa-question"></i></span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main>
+        <section id="song-container">
+            <div class="page overview active">
+                <div class="description">
+                    <img src="/cithara/songs/images/001.jpg">
+                    <div class="links">
+                        <a id="google" href="">
+                            <img src="/cithara/assets/images/google.svg">
+                        </a>
+                        <a id="youtube" href="">
+                            <img src="/cithara/assets/images/youtube.svg">
+                        </a>
+                    </div>
+                </div>
+                <div class="details">
+                    <div>
+                        <h1 id="title">52 Hearts</h1>
+                        <h2 id="author"> Bao The Whale</h2>
+                    </div>
+                    <div>
+                        <p>Chord: <span id="chords">C, D, E</span></p>
+                        <p>Duration: <span id="duration"></span></p>
+                        <p>BPM: <span id="bpm"></span></p>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="page lyric">
+                <pre>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam enim possimus nam optio fugiat, sed voluptas nihil amet rerum nesciunt aut neque fugit ipsa, cum ut accusantium facilis necessitatibus laboriosam.</pre>
+            </div>
+            <div class="page"></div>
+            <div class="page"></div>
+        </section>
+    </main>
+    <script>
+        const tabs = document.querySelectorAll(".tab");
+        const pages = document.querySelectorAll(".page");
+
+        tabs.forEach((tab, index) => {
+            tab.addEventListener("click", function() {
+                tabs.forEach(element => { element.classList.remove("active") })
+                pages.forEach(element => { element.classList.remove("active") })
+
+                tab.classList.add("active");
+                pages[index].classList.add("active");
+            })
+        })
+
+        console.log(window.location.hash);
+    </script>
+</body>
+</html>
