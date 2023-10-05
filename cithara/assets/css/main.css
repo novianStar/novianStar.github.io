@@ -122,6 +122,17 @@ section#song-container > .page.lyric > pre {
     padding: 2rem;
 }
 
+section#song-container > .page.chord-container {
+    display: grid;
+    grid-template-columns: repeat(4, 15vw);
+    justify-content: center;
+    overflow-wrap: normal;
+    gap: 1rem;
+}
+section#song-container > .page.video-container {
+    display: grid;
+    place-items: center;
+}
 
 
 

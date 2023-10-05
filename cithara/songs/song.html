@@ -46,7 +46,7 @@
         <section id="song-container">
             <div class="page overview active">
                 <div class="side">
-                    <img id="image" src="/cithara/songs/images/001.jpg">
+                    <img id="image" src="">
                     <div class="links">
                         <a id="google" href="" target="_blank">
                             <img src="/cithara/assets/images/google.svg">
@@ -58,12 +58,12 @@
                 </div>
                 <div class="main">
                     <div>
-                        <h1 id="title">52 Hearts</h1>
-                        <h2 id="author"> Bao The Whale</h2>
+                        <h1 id="title"></h1>
+                        <h2 id="author"></h2>
                     </div>
                     <div>
-                        <p>Chord: <span id="chords">C, D, E</span></p>
-                        <p>Duration: <span id="duration"></span></p>
+                        <p>Chord: <span id="chords"></span></p>
+                        <!-- <p>Duration: <span id="duration"></span></p> -->
                         <p>BPM: <span id="bpm"></span></p>
                     </div>
 
@@ -72,10 +72,16 @@
             <div class="page lyric">
                 <pre id="lyric">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam enim possimus nam optio fugiat, sed voluptas nihil amet rerum nesciunt aut neque fugit ipsa, cum ut accusantium facilis necessitatibus laboriosam.</pre>
             </div>
-            <div class="page"></div>
-            <div class="page"></div>
+            <div class="page chord-container"></div>
+            <div class="page video-container">
+                <video controls>
+                    <source src>
+                </video>
+            </div>
         </section>
     </main>
+    <script src="https://omnibrain.github.io/svguitar/js/svguitar.umd.js"></script>
+    <script src="/cithara/chords/chord.js"></script>
     <script src="/cithara/assets/javascript/main.js"></script>
     <script src="/cithara/songs/songs.js"></script>
     <script>
@@ -85,25 +91,50 @@
         function loadSong(id) {
             const song = songs.find(song => { return song.id === id })
 
-            const image = document.querySelector("#image");
-            const name = document.querySelector("#title");
-            const author = document.querySelector("#author");
-            const google = document.querySelector("#google");
-            const youtube = document.querySelector("#youtube");
-            const chords = document.querySelector("#chords");
-            const duration = document.querySelector("#duration");
-            const bpm = document.querySelector("#bpm");
-            const lyric = document.querySelector("#lyric");
+            const imageElement = document.querySelector("#image");
+            const nameElement = document.querySelector("#title");
+            const authorElement = document.querySelector("#author");
+            const googleElement = document.querySelector("#google");
+            const youtubeElement = document.querySelector("#youtube");
+            const chordElement = document.querySelector("#chords");
+            // const durationElement = document.querySelector("#duration");
+            const bpmElement = document.querySelector("#bpm");
+            const lyricElement = document.querySelector("#lyric");
 
-            image.src = `/cithara/songs/images/${ id }.jpg`;
-            name.textContent = song.name;
-            author.textContent = song.author;
-            google.href = `https://www.google.com/search?q=${ song.name }`;
-            youtube.href = song.youtubeUrl;
-            chords.textContent = song.chord;
-            duration.textContent = song.duration;
-            bpm.textContent = song.bpm;
-            lyric.textContent = song.lyric;
+            imageElement.src = `/cithara/songs/images/${ id }.jpg`;
+            nameElement.textContent = song.name;
+            authorElement.textContent = song.author;
+            googleElement.href = `https://www.google.com/search?q=${ song.name }`;
+            youtubeElement.href = song.youtubeUrl;
+            chordElement.textContent = song.chord;
+            // durationElement.textContent = song.duration;
+            bpmElement.textContent = song.bpm;
+            lyricElement.textContent = song.lyric;
+
+            const chordContainer = document.querySelector(".chord-container");
+
+            song.chord.forEach((chord, index) => {
+                chord = chord.split("/");
+                chord = chord.pop().toString();
+                const element = document.createElement("div");
+                element.setAttribute("class", "chord-item");
+
+                chordContainer.appendChild(element);
+
+                const chart = new svguitar.SVGuitarChord(document.querySelectorAll(".chord-item")[index]);
+
+                chart.chord(
+                    chords.flat(1).find(c => { return c.title === chord })
+                ).draw();
+            })
+
+            const video = document.querySelector(".video-container video");
+
+            try {
+                video.querySelector("source").src = `https://thehunter.thepsatri.com/cithara/songs/videos/${ id }.mp4`;
+            } catch {
+
+            }
         }
 
         loadSong(id);
