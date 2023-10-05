@@ -16,6 +16,9 @@ nav > .nav-top-bar > ul {
 nav > .nav-top-bar > .center {
     width: 100%;
 }
+nav > .nav-top-bar > .center.justify {
+    justify-content: center;
+}
 nav > .nav-top-bar > ul > li.button {
     display: flex;
     align-items: center;
@@ -31,6 +34,20 @@ nav > .nav-top-bar > ul > li.button {
 nav > .nav-top-bar > ul > li.button.active,
 nav > .nav-top-bar > ul > li.button:hover {
     background-color: var(--blue);
+}
+nav > .nav-top-bar > ul > li.icon {
+    display: flex;
+    width: 2.5rem;
+    margin: 0.5rem;
+    cursor: pointer;
+}
+nav > .nav-top-bar > ul > li.icon > span {
+    padding: 0.3125rem;
+    background-color: var(--black);
+    border-radius: 50%;
+}
+nav > .nav-top-bar > ul > li.icon img {
+    width: 100%;
 }
 nav > .nav-top-bar > ul > li.tab {
     display: flex;
@@ -48,4 +65,49 @@ nav > .nav-top-bar > ul > li.tab {
 nav > .nav-top-bar > ul > li.tab.active,
 nav > .nav-top-bar > ul > li.tab:hover {
     background-color: var(--white);
+}
+nav > .nav-top-bar > ul > li.input {
+    display: flex;
+    min-width: 10rem;
+    width: 100%;
+    max-width: 20rem;
+    margin: 0.5rem;
+    border: 2px solid var(--shadow-1-8);
+    border-radius: 1.25rem;
+    overflow: hidden;
+}
+nav > .nav-top-bar > ul > li.input > .icon {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.5rem;
+    cursor: pointer;
+}
+nav > .nav-top-bar > ul > li.input > .icon.active {
+    display: flex;
+}
+nav > .nav-top-bar > ul > li.input > .input {
+    width: 100%;
+}
+nav > .nav-top-bar > ul > li.input > .input > input {
+    appearance: none;
+    font-family: "Poppins";
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    padding: 0 1rem;
+}
+nav > .nav-top-bar > ul > li.input > .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.5rem;
+    background-color: var(--shadow-1-8);
+    border-left: 2px solid var(--shadow-1-8);
+    cursor: pointer;
+}
+nav > .nav-top-bar > ul > li.input > .button:hover {
+    background-color: var(--blue);
 }

@@ -168,48 +168,7 @@
         //
         // --- Speech Recognition --- 
         //
-        const recognition = new webkitSpeechRecognition() || new SpeechRecognition();
-        const microphone = document.querySelector('.microphone');
-        const timeoutDuration = 10000;
-
-        let recognitionTimeout = false;;
-
-        // Speech Recognition Setup
-        recognition.lang = 'th';
-
-        recognition.onresult = (event) => {
-            const result = event.results[0][0].transcript;
-            searchInput.value = result;
-
-            const minResult = searchMin(result, songs, 3)
-
-            setTimeout(() => searchbarResult(minResult, 300));
-
-            clearTimeout(recognitionTimeout);
-            recognitionTimeout = false;
-        }
-
-        microphone.addEventListener('click', function () {
-            // If is not recording
-            if(!recognitionTimeout) {
-                recognition.start();
-            
-                microphone.classList.add("active");
-
-                recognitionTimeout = setTimeout(() => {
-                    recognition.stop();
-                    
-                    microphone.classList.remove("active");
-                    recognitionTimeout = false;
-                }, timeoutDuration)
-            } else {
-                recognition.stop();
-
-                microphone.classList.remove("active");
-                clearTimeout(recognitionTimeout);
-                recognitionTimeout = false;
-            }
-        });
+        
 
         // --- ---  --- //
 

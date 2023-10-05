@@ -9,6 +9,41 @@
     <title>Cithara - A Guitar Web Application</title>
 </head>
 <body>
-    
+    <nav>
+        <div class="nav-top-bar">
+            <ul class="start">
+                <li class="button">
+                    <span><i class="fa-solid fa-bars"></i></span>
+                </li>
+                <li class="icon">
+                    <span><img src="/cithara/assets/images/logo.png"></span>
+                </li>
+            </ul>
+            <ul class="center justify">
+                <li class="button">
+                    <span><i class="fa-solid fa-camera"></i></span>
+                </li>
+                <li class="input searchbar">
+                    <span class="icon magnifying-glass"><i class="fa-solid fa-magnifying-glass"></i></span>
+                    <span class="input"><input type="text" autocomplete="off"></span>
+                    <span class="icon clear"><i class="fa-solid fa-xmark"></i></span>
+                    <span class="button search"><i class="fa-solid fa-arrow-right"></i></span>
+                </li>
+                <li class="button">
+                    <span><i class="fa-solid fa-microphone"></i></span>
+                </li>
+            </ul>
+            <ul class="end">
+                <li class="button" onclick="fullscreen()">
+                    <span><i class="fa-solid fa-expand"></i></span>
+                </li>
+                <li class="button">
+                    <span><i class="fa-solid fa-question"></i></span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <script src="/cithara/assets/javascript/main.js"></script>
+    <script src="/cithara/songs/songs.js"></script>
 </body>
 </html>
