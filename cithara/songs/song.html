@@ -73,11 +73,7 @@
                 <pre id="lyric">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam enim possimus nam optio fugiat, sed voluptas nihil amet rerum nesciunt aut neque fugit ipsa, cum ut accusantium facilis necessitatibus laboriosam.</pre>
             </div>
             <div class="page chord-container"></div>
-            <div class="page video-container">
-                <video controls>
-                    <source src>
-                </video>
-            </div>
+            <div class="page video-container"></div>
         </section>
     </main>
     <script src="https://omnibrain.github.io/svguitar/js/svguitar.umd.js"></script>
@@ -128,13 +124,21 @@
                 ).draw();
             })
 
-            const video = document.querySelector(".video-container video");
+            const videoContainer = document.querySelector(".video-container");
+
+            const video = document.createElement("video");
+            video.controls = true;
+            video.width = 320;
+            video.height = 240;
 
             try {
-                video.querySelector("source").src = `https://thehunter.thepsatri.com/cithara/songs/videos/${ id }.mp4`;
-            } catch {
+                video.src = `https://thehunter.thepsatri.com/cithara/songs/videos/${ id }.mp4`;
+            }
+            catch {
 
             }
+            
+            videoContainer.appendChild(video);
         }
 
         loadSong(id);
