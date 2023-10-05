@@ -69,49 +69,59 @@ section#song-container .page.overview {
     grid-template-columns: 192px 1fr;
     gap: 1rem;
 }
-section#song-container > .page.overview > .description,
-section#song-container > .page.overview > .details {
+section#song-container > .page.overview > .side,
+section#song-container > .page.overview > .main {
     display: flex;
     flex-direction: column;
     padding: 1rem;
     gap: 1rem;
     border-radius: 0.25rem;
 }
-section#song-container > .page.overview > .description {
+section#song-container > .page.overview > .side {
     grid-area: desc;
 }
-section#song-container > .page.overview > .details {
+section#song-container > .page.overview > .main {
     grid-area: details;
 }
-section#song-container > .page.overview > .description > img {
+section#song-container > .page.overview > .side > img {
     width: 100%;
     border-radius: 0.5rem;
     object-fit: cover;
 }
-section#song-container > .page.overview > .description > .links {
+section#song-container > .page.overview > .side > .links {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 1rem;
 }
-section#song-container > .page.overview > .description > .links > a {
+section#song-container > .page.overview > .side > .links > a {
     width: 2rem;
 }
-section#song-container > .page.overview > .description > .links > a > img {
+section#song-container > .page.overview > .side > .links > a > img {
     width: 100%;
 }
-section#song-container > .page.overview > .details #title {
+section#song-container > .page.overview > .main #title {
     font-size: 2rem;
     font-weight: bold;
 }
-section#song-container > .page.overview > .details #author {
+section#song-container > .page.overview > .main #author {
     font-size: 0.75rem;
     font-weight: normal;
     color: var(--gray);
 }
-section#song-container > .page.overview > .details p {
+section#song-container > .page.overview > .main p {
     font-size: 0.75rem;
 }
+section#song-container > .page.lyric {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+section#song-container > .page.lyric > pre {
+    font-size: 0.75rem;
+    padding: 2rem;
+}
+
 
 
 

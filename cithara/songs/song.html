@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="/cithara/assets/css/header.css">
     <title>Song Name</title>
 </head>
+
 <body>
     <nav>
         <div class="nav-top-bar light-gray-bg">
@@ -17,7 +19,7 @@
                 </li>
             </ul>
             <ul class="center">
-                <li class="tab">
+                <li class="tab active">
                     <span>Overview</span>
                 </li>
                 <li class="tab">
@@ -31,7 +33,7 @@
                 </li>
             </ul>
             <ul class="end">
-                <li class="button">
+                <li class="button fullscreen">
                     <span><i class="fa-solid fa-expand"></i></span>
                 </li>
                 <li class="button">
@@ -43,18 +45,18 @@
     <main>
         <section id="song-container">
             <div class="page overview active">
-                <div class="description">
-                    <img src="/cithara/songs/images/001.jpg">
+                <div class="side">
+                    <img id="image" src="/cithara/songs/images/001.jpg">
                     <div class="links">
-                        <a id="google" href="">
+                        <a id="google" href="" target="_blank">
                             <img src="/cithara/assets/images/google.svg">
                         </a>
-                        <a id="youtube" href="">
+                        <a id="youtube" href="" target="_blank">
                             <img src="/cithara/assets/images/youtube.svg">
                         </a>
                     </div>
                 </div>
-                <div class="details">
+                <div class="main">
                     <div>
                         <h1 id="title">52 Hearts</h1>
                         <h2 id="author"> Bao The Whale</h2>
@@ -64,22 +66,53 @@
                         <p>Duration: <span id="duration"></span></p>
                         <p>BPM: <span id="bpm"></span></p>
                     </div>
-                    
+
                 </div>
             </div>
             <div class="page lyric">
-                <pre>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam enim possimus nam optio fugiat, sed voluptas nihil amet rerum nesciunt aut neque fugit ipsa, cum ut accusantium facilis necessitatibus laboriosam.</pre>
+                <pre id="lyric">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam enim possimus nam optio fugiat, sed voluptas nihil amet rerum nesciunt aut neque fugit ipsa, cum ut accusantium facilis necessitatibus laboriosam.</pre>
             </div>
             <div class="page"></div>
             <div class="page"></div>
         </section>
     </main>
+    <script src="/cithara/assets/javascript/main.js"></script>
+    <script src="/cithara/songs/songs.js"></script>
     <script>
+        const hash = window.location.hash.replace("#", "");
+        const id = hash !== "" ? hash : Math.round(Math.random() * songs.length).toString().padStart(3, "0");
+
+        function loadSong(id) {
+            const song = songs.find(song => { return song.id === id })
+
+            const image = document.querySelector("#image");
+            const name = document.querySelector("#title");
+            const author = document.querySelector("#author");
+            const google = document.querySelector("#google");
+            const youtube = document.querySelector("#youtube");
+            const chords = document.querySelector("#chords");
+            const duration = document.querySelector("#duration");
+            const bpm = document.querySelector("#bpm");
+            const lyric = document.querySelector("#lyric");
+
+            image.src = `/cithara/songs/images/${ id }.jpg`;
+            name.textContent = song.name;
+            author.textContent = song.author;
+            google.href = `https://www.google.com/search?q=${ song.name }`;
+            youtube.href = song.youtubeUrl;
+            chords.textContent = song.chord;
+            duration.textContent = song.duration;
+            bpm.textContent = song.bpm;
+            lyric.textContent = song.lyric;
+        }
+
+        loadSong(id);
+
         const tabs = document.querySelectorAll(".tab");
         const pages = document.querySelectorAll(".page");
 
         tabs.forEach((tab, index) => {
-            tab.addEventListener("click", function() {
+            tab.addEventListener("click", function () {
                 tabs.forEach(element => { element.classList.remove("active") })
                 pages.forEach(element => { element.classList.remove("active") })
 
@@ -88,7 +121,8 @@
             })
         })
 
-        console.log(window.location.hash);
+
     </script>
 </body>
+
 </html>
