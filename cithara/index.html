@@ -12,24 +12,47 @@
     <nav>
         <div class="nav-top-bar">
             <ul class="start">
-                <li class="button">
+                <li class="button" onclick="toggleSidebar()">
                     <span><i class="fa-solid fa-bars"></i></span>
                 </li>
-                <li class="icon">
+                <li class="icon" onclick="window.location.href='/cithara/'">
                     <span><img src="/cithara/assets/images/logo.png"></span>
                 </li>
             </ul>
             <ul class="center justify">
-                <li class="button">
+                <li class="button" onclick="window.location.href ='/tools/ar'">
                     <span><i class="fa-solid fa-camera"></i></span>
                 </li>
                 <li class="input searchbar">
                     <span class="icon magnifying-glass"><i class="fa-solid fa-magnifying-glass"></i></span>
-                    <span class="input"><input type="text" autocomplete="off"></span>
+                    <span class="input">
+                        <input 
+                            type="text" 
+                            autocomplete="off" 
+                            oninput="
+                            setTimeout(() => { showResults(document.querySelector('.search-result'), searchMin(this.value, songs, 3)) }, 100)" 
+                            onchange="
+                            setTimeout(() => { showResults(document.querySelector('.search-result'), searchMin(this.value, songs, 3)) }, 100)"
+                        >
+                    </span>
                     <span class="icon clear"><i class="fa-solid fa-xmark"></i></span>
-                    <span class="button search"><i class="fa-solid fa-arrow-right"></i></span>
+                    <span 
+                        class="button search" 
+                        onclick="window.location.href=`/cithara/songs/#${ document.querySelector('.searchbar input').value }`"
+                    >
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </span>
+                    <div class="search-result">
+                        <div class="result">
+                            <img src="/cithara/songs/images/001.jpg">
+                            <span>Hello</span>
+                        </div>
+                    </div>
                 </li>
-                <li class="button">
+                <li 
+                    class="button" 
+                    onclick="microphone(this, document.querySelector('.searchbar input'))"
+                >
                     <span><i class="fa-solid fa-microphone"></i></span>
                 </li>
             </ul>
@@ -37,13 +60,72 @@
                 <li class="button" onclick="fullscreen()">
                     <span><i class="fa-solid fa-expand"></i></span>
                 </li>
-                <li class="button">
+                <li class="button" onclick="">
                     <span><i class="fa-solid fa-question"></i></span>
                 </li>
             </ul>
         </div>
+        <div class="nav-side-bar">
+            <ul class="row">
+                <li class="round" onclick="toggleSidebar()">
+                    <span><i class="fa-solid fa-bars"></i></span>
+                </li>
+                <li class="box center" onclick="window.location.href='/cithara/'">
+                    <span>Cithara</span>
+                </li>
+            </ul>
+            <ul class="column">
+                <li class="box" onclick="window.location.href='/cithara/songs/'">
+                    <span><i class="fa-solid fa-music"></i></span>
+                    <span>Songbook</span>
+                </li>
+                <li class="box">
+                    <span><i class="fa-solid fa-play"></i></span>
+                    <span>Playstyle</span>
+                    <input type="checkbox">
+                    <ul>
+                        <li onclick="window.location.href='/cithara/playstyle/strum/'"><span>Strumming</span></li>
+                        <li onclick="window.location.href='/cithara/playstyle/flatpick/'"><span>Flatpicking</span></li>
+                    </ul>
+                </li>
+                <li class="box" onclick="window.location.href='/cithara/chords/'">
+                    <span><i class="fa-solid fa-location-pin"></i></span>
+                    <span>Playchord</span>
+                </li>
+            </ul>
+        </div>
+        <div class="side-bar-overlay"></div>
     </nav>
+    <main>
+        <section id="menu-container">
+            <div class="menu">
+                <div class="trigger red-orange-bg">
+                    <span>Teach</span>
+                </div>
+                <ul class="sub-menu">
+                    <li class="red-orange-bg"><span>Strumming</span></li>
+                    <li class="yellow-green-bg"><span>Flatpicking</span></li>
+                    <li class="blue-purple-bg"><span>Playchord</span></li>
+                </ul>
+            </div>
+            <div class="menu">
+                <div class="trigger yellow-green-bg">
+                    <span>Songbook</span>
+                </div>
+            </div>
+        </section>
+    </main>
     <script src="/cithara/assets/javascript/main.js"></script>
+    <script src="/cithara/assets/javascript/search.js"></script>
     <script src="/cithara/songs/songs.js"></script>
+    <script>
+        const trigger = document.querySelector("#menu-container .trigger");
+        const subMenu = document.querySelector("#menu-container .sub-menu");
+
+        trigger.addEventListener("click", function() {
+            trigger.classList.toggle("active");
+            subMenu.classList.toggle("active");
+        })
+    </script>
 </body>
 </html>

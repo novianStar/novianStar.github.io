@@ -43,7 +43,7 @@ function previous() {
 /**
  * Toggle Microphone
  */
-function microphone(targetElement = undefined, timeout = 10000) {
+function microphone(self, targetElement = undefined, timeout = 10000) {
     const recognition = new webkitSpeechRecognition() || new SpeechRecognition();
     recognition.lang = "th";
 
@@ -52,10 +52,13 @@ function microphone(targetElement = undefined, timeout = 10000) {
     recognition.onresult = (event) => {
         result = event.results[0][0].transcript;
 
+        self.classList.remove("active");
+
         clearTimeout(timeout.microphone);
         timeout.microphone = false;
 
-        console.log(result);
+        targetElement?.setAttribute("value", result);
+        targetElement?.dispatchEvent(new Event('input'));
         
         return result;
     }
@@ -63,30 +66,40 @@ function microphone(targetElement = undefined, timeout = 10000) {
     if(!timeout.microphone) {
         recognition.start();
     
-        this.classList.add("active");
+        self.classList.add("active");
 
         timeout.microphone = setTimeout(() => {
             recognition.stop();
             
-            this.classList.remove("active");
+            self.classList.remove("active");
             timeout.microphone = false;
         }, timeout)
     } else {
         recognition.stop();
 
-        this.classList.remove("active");
+        self.classList.remove("active");
         clearTimeout(timeout.microphone);
         timeout.microphone = false;
     }
 }
 
 /**
- * Search
+ * 
  */
-function search() {
+function toggleSidebar() {
+  const sidebar = document.querySelector(".nav-side-bar");
 
+  sidebar.classList.toggle("active");
+
+  if (sidebar.classList.contains("active")) {
+    sideBarOverlay.classList.add("active");
+  } else {
+    sideBarOverlay.classList.remove("active");
+  }
 }
 
-function searchMin() {
+const sideBarOverlay = document.querySelector(".side-bar-overlay");
 
-}
+sideBarOverlay.addEventListener("click", function() {
+  toggleSidebar();
+})

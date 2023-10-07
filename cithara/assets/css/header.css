@@ -9,9 +9,11 @@ nav > .nav-top-bar {
     left: 0;
     width: 100vw;
     height: 3.5rem;
+    z-index: 900;
 }
 nav > .nav-top-bar > ul {
     display: flex;
+    position: relative;
 }
 nav > .nav-top-bar > .center {
     width: 100%;
@@ -68,13 +70,14 @@ nav > .nav-top-bar > ul > li.tab:hover {
 }
 nav > .nav-top-bar > ul > li.input {
     display: flex;
+    position: relative;
     min-width: 10rem;
     width: 100%;
     max-width: 20rem;
     margin: 0.5rem;
+    background-color: var(--shadow-1-16);
     border: 2px solid var(--shadow-1-8);
     border-radius: 1.25rem;
-    overflow: hidden;
 }
 nav > .nav-top-bar > ul > li.input > .icon {
     display: none;
@@ -85,6 +88,9 @@ nav > .nav-top-bar > ul > li.input > .icon {
 }
 nav > .nav-top-bar > ul > li.input > .icon.active {
     display: flex;
+}
+nav > .nav-top-bar > ul > li.input > .icon.active:hover {
+    color: var(--blue);
 }
 nav > .nav-top-bar > ul > li.input > .input {
     width: 100%;
@@ -104,10 +110,178 @@ nav > .nav-top-bar > ul > li.input > .button {
     align-items: center;
     justify-content: center;
     min-width: 2.5rem;
-    background-color: var(--shadow-1-8);
-    border-left: 2px solid var(--shadow-1-8);
     cursor: pointer;
 }
 nav > .nav-top-bar > ul > li.input > .button:hover {
-    background-color: var(--blue);
+    color: var(--blue);
+}
+nav > .nav-top-bar > ul > li.input.searchbar > div.search-result {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: calc(100% + 1rem);
+    width: 100%;
+    padding: 0.5rem 0;
+    background-color: var(--lightgray);
+    border-radius: 1.25rem;
+    overflow: hidden;
+}
+nav > .nav-top-bar > ul > li.input.searchbar > div.search-result.active {
+    display: flex;
+}
+nav > .nav-top-bar > ul > li.input.searchbar > div.search-result > .result {
+    display: flex;
+    padding: 0.5rem;
+    gap: 1rem;
+    cursor: pointer;
+    user-select: none;
+}
+nav > .nav-top-bar > ul > li.input.searchbar > div.search-result > .result:hover {
+    background-color: var(--white);
+}
+nav > .nav-top-bar > ul > li.input.searchbar > div.search-result > .result > img {
+    width: 2.5rem;
+    border-radius: 0.25rem;
+}
+nav > .nav-top-bar > ul > li.input.searchbar > div.search-result > .result > span {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+/* Navigation Sidebar */
+nav > .nav-side-bar {
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    width: 100%;
+    max-width: 15rem;
+    height: 100vh;
+    background-color: var(--gray);
+    z-index: 1000;
+    overflow-y: scroll;
+
+    transition: transform 300ms ease;
+}
+nav > .nav-side-bar.active {
+    box-shadow: 0 0 16px var(--shadow-1-2);
+    transform: translateX(0);
+}
+nav > .nav-side-bar > ul {
+    display: flex;
+}
+nav > .nav-side-bar > ul.row {
+    flex-direction: row;
+}
+nav > .nav-side-bar > ul.column {
+    flex-direction: column;
+}
+nav > .nav-side-bar > ul:not(:first-of-type)::before {
+    content: "";
+    align-self: center;
+    width: 90%;
+    margin: 0.5rem 0;
+    border: 2px solid var(--white);
+    border-radius: 0.5rem;
+    opacity: 0.25;
+}
+nav > .nav-side-bar > ul > li {
+    display: block;
+    text-align: left;
+    position: relative;
+    min-height: 2.5rem;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border-radius: 0.5rem;
+}
+nav > .nav-side-bar > ul.row > li {
+    flex: 1;
+}
+nav > .nav-side-bar > ul > li:hover {
+    color: var(--blue);
+    background-color: var(--black);
+    cursor: pointer;
+    user-select: none;
+}
+nav > .nav-side-bar > ul > li.box {
+    padding: 0.5rem 1rem;
+}
+nav > .nav-side-bar > ul > li.box.center {
+    text-align: center;
+}
+nav > .nav-side-bar > ul > li.round {
+    text-align: center;
+    max-width: 2.5rem;
+    border-radius: 50%;
+}
+nav > .nav-side-bar > ul > li > span + span {
+    margin-left: 1rem;
+}
+nav > .nav-side-bar > ul > li > input[type=checkbox] {
+    appearance: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2.5rem;
+    cursor: pointer;
+}
+nav > .nav-side-bar > ul > li > input[type=checkbox]::after {
+    content: "\25BC";
+    position: absolute;
+    top: 50%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+}
+nav > .nav-side-bar > ul > li > ul {
+    display: flex;
+    flex-direction: column;
+    max-height: 0;
+    margin: 0rem -0.5rem 0 -0.5rem;
+    background-color: var(--black);
+    border-radius: 0.5rem;
+    overflow-y: hidden;
+
+    transition: max-height 300ms ease, margin 300ms ease;
+}
+nav > .nav-side-bar > ul > li > input[type=checkbox]:checked + ul {
+    max-height: none;
+    margin: 1rem -0.5rem 0 -0.5rem;
+}
+nav > .nav-side-bar > ul > li > ul > li {
+    color: var(--white);
+    display: block;
+    flex: 1;
+    text-align: left;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border-radius: 0.5rem;
+}
+nav > .nav-side-bar > ul > li > ul > li:hover {
+    color: var(--blue);
+    background-color: var(--gray);
+}
+nav > .side-bar-overlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--shadow-1-2);
+    opacity: 0;
+    z-index: 999;
+
+    transition: opacity 300ms ease;
+
+    pointer-events: none;
+}
+nav > .side-bar-overlay.active {
+    cursor: pointer;
+    pointer-events: auto;
+    opacity: 1;
 }

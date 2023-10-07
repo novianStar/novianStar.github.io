@@ -1,3 +1,8 @@
+let script = document.createElement('script');
+script.type = 'text/javascript';
+
+script.src = '/cithara/assets/external/wordcut.min.js';
+document.body.appendChild(script);
 /**
  * Return results at limited value
  * 
@@ -10,13 +15,12 @@ function searchMin(inputs, items, limit) {
     // Split words into array
     const query = wordcut(inputs);
     const targetAttribute = ["id", "name", "author"];
-
     // Tolarence if score is below half of the attributes multiply by query
     const tolerance = ((-targetAttribute.length * query.length) / 2);
 
     //  In case of no query or item
     if (query.length === 0 || items.length === 0) {
-        return;
+        return [];
     }
 
     // Calculate relevance scores for each item
@@ -56,7 +60,7 @@ function searchMin(inputs, items, limit) {
 
     // Extract the sorted items
     const sortedItems = filterResults.map(result => result.item);
-    
+
     // Return Array
     return sortedItems.slice(0, limit);
 }
@@ -72,7 +76,28 @@ function wordcut(value) {
     output = output.split("|");
     output = output.filter(i => { return i !== " " });
 
-    console.log(output);
+    return output[0] === "" ? [] : output;
+}
 
-    return output;
+function showResults(element, items) {
+    element.textContent = "";
+    element.classList.add("active");
+
+    if(items.length === 0) {
+        element.classList.remove("active");
+        return;
+    }
+    
+    items.forEach(item => {
+        const el = document.createElement("div");
+        el.setAttribute("class", "result");
+        el.setAttribute("onclick", `window.location.href='/cithara/songs/song.html#${ item.id }'`)
+        const img = document.createElement("img");
+        img.setAttribute("src", `/cithara/songs/images/${ item.id }.jpg`);
+        const span = document.createElement("span");
+        span.textContent = item.name;
+        el.appendChild(img);
+        el.appendChild(span);
+        element.appendChild(el);
+    })
 }

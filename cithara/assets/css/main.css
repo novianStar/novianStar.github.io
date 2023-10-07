@@ -9,7 +9,7 @@
     --blue:     #59adf6;
     --violet:   #9d94ff;
     --purple:   #c780e8;
-    --gray:     #5b5f7a;
+    --gray:     #3b3f5a;
     --black:    #2b2f4a;
 
     --shadow-1-1: rgba(43, 47, 74, 1);
@@ -41,6 +41,70 @@ ul {
 body {
     color: var(--black);
     font-family: "Poppins";
+}
+/*
+/*  Menu Container
+/*                  */
+section#menu-container {
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 3.5rem);
+    margin-top: 3.5rem;
+    overflow: hidden;
+}
+section#menu-container > .menu {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+section#menu-container > .menu > .trigger {
+    position: relative;
+    flex: 1;
+    margin: 0.5rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    cursor: pointer;
+}
+section#menu-container > .menu > .trigger.active {
+    display: none;
+}
+section#menu-container > .menu > .trigger > span {
+    font-size: 2rem;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    transition: all 300ms ease;
+}
+section#menu-container > .menu > .trigger:hover > span {
+    transform: translateY(-10%) scale(1.2);
+}
+section#menu-container > .menu > .sub-menu {
+    display: none;
+    flex-direction: column;
+    height: 100%;
+    margin: 0.5rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: max-height 300ms ease;
+}
+section#menu-container > .menu > .sub-menu.active {
+    display: flex;
+}
+section#menu-container > .menu > .sub-menu > li {
+    flex: 1;
+    position: relative;
+    cursor: pointer;
+}
+section#menu-container > .menu > .sub-menu > li > span {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    transition: all 300ms ease;
+}
+section#menu-container > .menu > .sub-menu > li > span:hover {
+    transform: scale(1.2);
 }
 /*                  */
 /*  Song Container  */
@@ -144,6 +208,9 @@ section#song-container > .page.video-container {
 .red-bg {
     background-color: var(--red);
 }
+.orange-bg {
+    background-color: var(--orange);
+}
 .white-bg {
     background-color: var(--white);
 }
@@ -161,4 +228,13 @@ section#song-container > .page.video-container {
 }
 .shadow-1-32-bg {
     background-color: var(--shadow-1-32);
+}
+.red-orange-bg {
+    background-image: linear-gradient(to bottom right, var(--red), var(--orange));
+}
+.yellow-green-bg {
+    background-image: linear-gradient(to bottom right, var(--yellow), var(--green));
+}
+.blue-purple-bg {
+    background-image: linear-gradient(to bottom right, var(--blue), var(--purple));
 }
