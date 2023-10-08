@@ -100,6 +100,6 @@ function toggleSidebar() {
 
 const sideBarOverlay = document.querySelector(".side-bar-overlay");
 
-sideBarOverlay.addEventListener("click", function() {
+sideBarOverlay?.addEventListener("click", function() {
   toggleSidebar();
 })

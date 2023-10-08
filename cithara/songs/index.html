@@ -127,6 +127,9 @@
         const filters = document.querySelectorAll(".filters input[type=radio]");
         let filter = "all";
 
+        let hash = window.location.hash;
+        let id = hash?.toString().replace("#", "");
+
         filters.forEach(filterElement => {
             filterElement.addEventListener("click", () => {
                 checkFilter();
@@ -149,6 +152,7 @@
             })
         }
         const input = document.querySelector(".searchbar input");
+        input.value = id;
 
         input.addEventListener("input", function() {
             showResults(
@@ -184,7 +188,7 @@
 
         showResults(
             document.querySelector("#songlist .list"),
-            search("", songs, filter)
+            search(id, songs, filter)
         );
     </script>
 </body>
