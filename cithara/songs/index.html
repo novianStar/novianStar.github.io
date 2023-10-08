@@ -130,8 +130,8 @@
         const filters = document.querySelectorAll(".filters input[type=radio]");
         let filter = "all";
 
-        let hash = window.location.hash;
-        let id = hash?.toString().replace("#", "");
+        const hash = window.location.hash;
+        let id = decodeURIComponent(hash?.replace("#", ""));
 
         filters.forEach(filterElement => {
             filterElement.addEventListener("click", () => {

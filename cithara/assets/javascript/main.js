@@ -57,7 +57,41 @@ function microphone(self, targetElement = undefined, timeout = 10000) {
         clearTimeout(timeout.microphone);
         timeout.microphone = false;
 
-        targetElement?.setAttribute("value", result);
+        modifiedResult = result.split(" ");
+        
+        modifiedResult.forEach((r, index)=> {
+          if (r === "ศูนย์") {
+            modifiedResult[index] = "0";
+          } else if (r === "หนึ่ง") {
+            modifiedResult[index] = "1";
+          }
+          else if (r === "สอง") {
+            modifiedResult[index] = "2";
+          }
+          else if (r === "สาม") {
+            modifiedResult[index] = "3";
+          }
+          else if (r === "สี่") {
+            modifiedResult[index] = "4";
+          }
+          else if (r === "ห้า") {
+            modifiedResult[index] = "5";
+          }
+          else if (r === "หก") {
+            modifiedResult[index] = "6";
+          }
+          else if (r === "เจ็ด") {
+            modifiedResult[index] = "7";
+          }
+          else if (r === "แปด") {
+            modifiedResult[index] = "8";
+          }
+          else if (r === "เก้า") {
+            modifiedResult[index] = "9";
+          }
+        })
+
+        targetElement.value = targetElement ? modifiedResult.toString().replaceAll(",", "") : "";
         targetElement?.dispatchEvent(new Event('input'));
         
         return result;
