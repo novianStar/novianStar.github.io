@@ -37,7 +37,7 @@
                     <span class="icon clear"><i class="fa-solid fa-xmark"></i></span>
                     <span 
                         class="button search" 
-                        onclick="window.location.href=`/cithara/songs/#${ document.querySelector('.searchbar input').value }`"
+                        onclick=""
                     >
                         <i class="fa-solid fa-arrow-right"></i>
                     </span>
@@ -55,7 +55,10 @@
                 <li class="button" onclick="fullscreen()">
                     <span><i class="fa-solid fa-expand"></i></span>
                 </li>
-                <li class="button" onclick="">
+                <li class="button" onclick="showResults(
+                    document.querySelector('#songlist .list'),
+                    search(input.value, songs, filter)
+                );">
                     <span><i class="fa-solid fa-question"></i></span>
                 </li>
             </ul>
