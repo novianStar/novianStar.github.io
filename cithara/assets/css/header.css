@@ -242,7 +242,6 @@ nav > .nav-side-bar > ul > li > ul {
     flex-direction: column;
     max-height: 0;
     margin: 0rem -0.5rem 0 -0.5rem;
-    background-color: var(--black);
     border-radius: 0.5rem;
     overflow-y: hidden;
 

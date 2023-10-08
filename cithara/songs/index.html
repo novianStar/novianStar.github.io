@@ -32,8 +32,6 @@
                         <input 
                             type="text" 
                             autocomplete="off" 
-                            oninput="searchMin(this.value, songs, 3)" 
-                            onchange="searchMin(this.value, songs, 3)"
                         >
                     </span>
                     <span class="icon clear"><i class="fa-solid fa-xmark"></i></span>
@@ -94,68 +92,100 @@
         <div class="side-bar-overlay"></div>
     </nav>
     <main>
-        <section id="menu-container">
-            <div class="menu">
-                <div class="trigger red-orange-bg">
-                    <span>Teach</span>
-                </div>
-                <ul class="sub-menu">
-                    <li class="red-orange-bg" onclick="window.location.href='/cithara/chords/'"><span>Chord</span></li>
-                    <li class="yellow-green-bg" onclick="window.location.href='/cithara/strum/'"><span>Strumming</span></li>
-                    <li class="blue-purple-bg" onclick="window.location.href='/cithara/flatpick/'"><span>Flatpicking</span></li>
-                </ul>
+        <section id="songlist">
+            <div class="filters">
+                <label for="all" class="active">
+                    <input id="all" name="filter" type="radio" value="all" checked>
+                    <span>All</span>
+                </label>
+                <label for="name">
+                    <input id="name" name="filter" type="radio" value="name">
+                    <span>Name</span>
+                </label>
+                <label for="artist">
+                    <input id="artist" name="filter" type="radio" value="author">
+                    <span>Artist</span>
+                </label>
+                <label for="lyric">
+                    <input id="lyric" name="filter" type="radio" value="lyric">
+                    <span>Lyric</span>
+                </label>
+                <label for="number">
+                    <input id="number" name="filter" type="radio" value="id">
+                    <span>Number</span>
+                </label>
             </div>
-            <div class="menu">
-                <div class="trigger yellow-green-bg" onclick="window.location.href='/cithara/songs/'">
-                    <span>Songbook</span>
-                </div>
+            <div class="list">
             </div>
         </section>
     </main>
     <script src="/cithara/assets/javascript/main.js"></script>
     <script src="/cithara/assets/javascript/search.js"></script>
+    <script src="/cithara/assets/external/wordcut.min.js"></script>
     <script src="/cithara/songs/songs.js"></script>
     <script>
-        const trigger = document.querySelector("#menu-container .trigger");
-        const subMenu = document.querySelector("#menu-container .sub-menu");
+        const filters = document.querySelectorAll(".filters input[type=radio]");
+        let filter = "all";
 
-        trigger.addEventListener("click", function() {
-            trigger.classList.toggle("active");
-            subMenu.classList.toggle("active");
+        filters.forEach(filterElement => {
+            filterElement.addEventListener("click", () => {
+                checkFilter();
+                showResults(
+                    document.querySelector("#songlist .list"),
+                    search(input.value, songs, filter)
+                );
+            });
         })
 
+        function checkFilter() {
+            filters.forEach(element => {
+                filter = element.checked ? element.value : filter;
+
+                if (element.checked) {
+                    element.parentNode.classList.add("active");
+                } else {
+                    element.parentNode.classList.remove("active");
+                }
+            })
+        }
         const input = document.querySelector(".searchbar input");
 
         input.addEventListener("input", function() {
-            showResultsMin(
-                document.querySelector(".search-result"),
-                searchMin(this.value, songs, 3), 
-                500
+            showResults(
+                document.querySelector("#songlist .list"),
+                search(this.value, songs, filter)
             );
         });
 
-        function showResultsMin(element, items) {
+        function showResults(element, items) {
             element.textContent = "";
-            element.classList.add("active");
-
-            if(items.length === 0) {
-                element.classList.remove("active");
-                return;
-            }
             
             items.forEach(item => {
                 const el = document.createElement("div");
-                el.setAttribute("class", "result");
+                el.setAttribute("class", "song");
                 el.setAttribute("onclick", `window.location.href='/cithara/songs/song.html#${ item.id }'`)
                 const img = document.createElement("img");
                 img.setAttribute("src", `/cithara/songs/images/${ item.id }.jpg`);
-                const span = document.createElement("span");
-                span.textContent = item.name;
+                const detail= document.createElement("div");
+                detail.classList.add("detai;");
+                const name = document.createElement("div");
+                name.classList.add("name");
+                name.textContent = item.name;
+                const author = document.createElement("div");
+                author.classList.add("artist");
+                author.textContent = item.author;
+                detail.appendChild(name);
+                detail.appendChild(author);
                 el.appendChild(img);
-                el.appendChild(span);
+                el.appendChild(detail);
                 element.appendChild(el);
             })
         }
+
+        showResults(
+            document.querySelector("#songlist .list"),
+            search("", songs, filter)
+        );
     </script>
 </body>
 </html>
