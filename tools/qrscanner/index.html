@@ -15,7 +15,6 @@
     }
 </style>
 <video id="scanner" width="100%" height="320"></video>
-<button id="start">Start</button>
 <script type="module">
     import QrScanner from "/node_modules/qr-scanner/qr-scanner.min.js";
 
@@ -30,7 +29,9 @@
 
     let isScanning = false;
 
-    const start = document.getElementById("start");
+    qrScanner.start();
+
+    /*const start = document.getElementById("start");
     start.addEventListener("click", function() {
         if (isScanning) {
             qrScanner.stop();
@@ -43,5 +44,5 @@
         }
 
         start.textContent = isScanning ? "Stop" : "Start";
-    });
+    });*/
 </script>

@@ -37,6 +37,14 @@ nav > .nav-top-bar > ul > li.button.active,
 nav > .nav-top-bar > ul > li.button:hover {
     background-color: var(--blue);
 }
+nav > .nav-top-bar > ul > li.text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    gap: 1rem;
+}
 nav > .nav-top-bar > ul > li.icon {
     display: flex;
     width: 2.5rem;

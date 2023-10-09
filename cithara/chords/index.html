@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/8e7dc2ee26.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/cithara/assets/css/main.css">
+    <link rel="stylesheet" href="/cithara/assets/css/header.css">
+    <title>Cithara - A Guitar Web Application</title>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-top-bar">
+            <ul class="start">
+                <li class="button" onclick="previous()">
+                    <span><i class="fa-solid fa-arrow-left"></i></span>
+                </li>
+                <li class="text">
+                    <span>Chords</span>
+                </li>
+            </ul>
+            <ul class="center justify">
+            </ul>
+            <ul class="end">
+                <li class="button" onclick="fullscreen()">
+                    <span><i class="fa-solid fa-expand"></i></span>
+                </li>
+                <li class="button" onclick="">
+                    <span><i class="fa-solid fa-question"></i></span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main>
+        <link rel="stylesheet" href="/cithara/assets/css/chord.css">
+        <section id="chord-container">
+            <div class="chord">
+                <div class="chord-name">Select Chord</div>
+                <div class="chord-table">
+                    <div class="slider">
+                        <svg class="svg-inline--fa fa-arrow-left" aria-hidden="true" focusable="false" data-prefix="fas"
+                            data-icon="arrow-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
+                            data-fa-i2svg="">
+                            <path fill="currentColor"
+                                d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z">
+                            </path>
+                        </svg><!-- <i class="fa-solid fa-arrow-left"></i> Font Awesome fontawesome.com -->
+                    </div>
+                    <div class="table">
+                        <div class="silent">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="string">
+                            <div class="fret">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            <div class="fret">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            <div class="fret">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            <div class="fret">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            <div class="fret">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            <div class="fret">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                        <div class="num">
+                            <div></div>
+                            <div>1</div>
+                            <div>2</div>
+                            <div>3</div>
+                            <div>4</div>
+                            <div>5</div>
+                            <div>6</div>
+                            <div>7</div>
+                            <div>8</div>
+                            <div>9</div>
+                        </div>
+                    </div>
+                    <div class="slider">
+                        <svg class="svg-inline--fa fa-arrow-right" aria-hidden="true" focusable="false"
+                            data-prefix="fas" data-icon="arrow-right" role="img" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 448 512" data-fa-i2svg="">
+                            <path fill="currentColor"
+                                d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z">
+                            </path>
+                        </svg><!-- <i class="fa-solid fa-arrow-right"></i> Font Awesome fontawesome.com -->
+                    </div>
+                </div>
+            </div>
+            <div class="chordSelector">
+                <div><span>C</span></div>
+                <div><span>D</span></div>
+                <div><span>E</span></div>
+                <div><span>F</span></div>
+                <div><span>G</span></div>
+                <div><span>A</span></div>
+                <div><span>B</span></div>
+                <div class="chordSelection" data-pointer=""></div>
+            </div>
+        </section>
+    </main>
+    <script src="/cithara/assets/javascript/main.js"></script>
+    <script src="/cithara/assets/javascript/search.js"></script>
+    <script src="/cithara/chords/chord.js"></script>
+    <script>
+        
+        const select = document.querySelectorAll(".chordSelector > div:not(.chordSelection)");
+        const selection = document.querySelector(".chordSelection");
+
+        const silent = [...document.querySelectorAll(".silent div")];
+        const strings = [];
+        const frets = document.querySelectorAll(".string .fret");
+        const nums = [...document.querySelectorAll(".num div")];
+        nums.shift();
+
+        frets.forEach((fretElement, index) => {
+            const children = Array.from(fretElement.children);
+
+            strings.push(children)
+        });
+
+        strings.reverse();
+
+        silent.reverse();
+
+        let value;
+
+        select.forEach((item, index) => {
+            item.addEventListener("click", function () {
+                selectionToggle(index);
+            })
+        })
+
+        document.addEventListener("click", event => {
+            if (selection.classList.contains("active")) {
+                // Check if the clicked element is not the selection element
+                if (!(event.target === selection || selection.contains(event.target)) &&
+                    !(event.target === document.querySelector(".chordSelector") ||
+                        document.querySelector(".chordSelector").contains(event.target))) {
+
+                    selection.textContent = "";
+                    selection.setAttribute("data-pointer", "");
+                    selection.classList.remove("active");
+                }
+
+            }
+        });
+
+        function selectionToggle(chordArray) {
+            if (selection.classList.contains("active") && parseInt(selection.getAttribute("data-pointer")) === chordArray) {
+                selection.textContent = "";
+                selection.setAttribute("data-pointer", "");
+                selection.classList.remove("active");
+            } else {
+                selection.setAttribute("data-pointer", chordArray);
+
+                selection.textContent = "";
+
+                chords[chordArray].forEach((c, i) => {
+                    const element = document.createElement("div");
+                    element.textContent = c.title;
+                    element.addEventListener("click", function () {
+                        value = c;
+                        drawChord(value, offsetValue);
+
+                        selection.classList.remove("active");
+                    })
+
+                    selection.appendChild(element);
+                })
+
+                selection.classList.add("active");
+            }
+        }
+
+        let offsetValue = 0;
+        const offsetValueMin = 0;
+        const offsetValueMax = 10;
+
+        function offsetSlider(value) {
+            // 0 to Left, 1 to Right //
+            offsetValue = (offsetValue > offsetValueMin) & value === 0 ? offsetValue - 1 : offsetValue;
+            offsetValue = (offsetValue < offsetValueMax) & value === 1 ? offsetValue + 1 : offsetValue;
+
+            nums.forEach((item, index) => {
+                item.textContent = (index + 1) + offsetValue;
+            })
+
+            return offsetValue;
+        }
+
+        const slider = document.querySelectorAll(".slider");
+
+        slider.forEach((item, index) => {
+            item.addEventListener("click", () => {
+                drawChord(value, offsetSlider(index));
+            })
+        })
+
+        function drawChord(value, offset) {
+            if (!value) {
+                return false;
+            }
+            // --- Clear Chord ---//
+            deleteChord(strings);
+
+            // --- Change Title --- //
+            document.querySelector(".chord-name").textContent = value.title;
+
+            // --- Draw Circle --- //
+            circleFrets = [3, 5, 7, 9, 12];
+
+            strings[3].forEach((item, index) => {
+                const circle = document.createElement("div");
+                circle.classList.add("circle");
+
+                circleFrets.forEach((i, j) => {
+                    if (index === (i - 1 - offset)) {
+                        if (i === 12) {
+                            let circle = document.createElement("div");
+                            circle.classList.add("circle");
+
+                            strings[4][index].appendChild(circle);
+
+                            circle = document.createElement("div");
+                            circle.classList.add("circle");
+
+                            strings[2][index].appendChild(circle);
+                        } else {
+                            item.appendChild(circle);
+                        }
+                    }
+                })
+            })
+            // --- Draw Pins --- //
+            if (value.fingers) {
+                value.fingers.forEach((item, index) => {
+
+                    let text = typeof (item[1]) === "string" ? item[1] : item[2];
+                    let fret = typeof (item[1]) === "string" ? undefined : item[1] - 1 - offset;
+                    let string = item[0] - 1;
+
+                    const element = document.createElement("div");
+                    element.textContent = text;
+
+                    switch (text) {
+                        case ("1"):
+                            element.style.backgroundColor = "var(--red)";
+                            break;
+                        case ("2"):
+                            element.style.backgroundColor = "var(--orange)";                            break;
+                        case ("3"):
+                            element.style.backgroundColor = "var(--blue)";                            break;
+                        case ("4"):
+                            element.style.backgroundColor = "var(--purple)";                            break;
+                        default:
+                            break;
+                    }
+
+                    if (fret !== undefined) {
+                        if (fret >= 0) {
+                            strings[string][fret].appendChild(element);
+                        }
+
+                    } else {
+                        silent[string].appendChild(element);
+                    }
+
+                })
+            }
+
+            // --- Draw Bars --- //
+            if (value.barres) {
+                value.barres.forEach((item, index) => {
+                    if (typeof (item.fromString) === 'object') {
+                        return false;
+                    }
+                    const fromString = item.fromString - 1;
+                    const toString = item.toString - 1;
+                    const fret = item.fret - 1 - offset;
+                    const text = item.text;
+
+                    const element = document.createElement("div");
+                    element.textContent = text;
+                    element.style.height = 1.5 * (fromString - toString + 1) + "rem";
+
+                    switch (text) {
+                        case ("1"):
+                            element.style.backgroundColor = "var(--red)";
+                            break;
+                        case ("2"):
+                            element.style.backgroundColor = "var(--orange)";                            break;
+                        case ("3"):
+                            element.style.backgroundColor = "var(--blue)";                            break;
+                        case ("4"):
+                            element.style.backgroundColor = "var(--purple)";                            break;
+                        default:
+                            break;
+                    }
+                    
+                    if (fret >= 0) {
+                        strings[fromString][fret].appendChild(element);
+                    }
+                })
+            }
+
+        }
+
+        function deleteChord(array) {
+            strings.forEach(element => {
+                element.forEach(e => {
+                    e.textContent = "";
+                })
+            })
+            silent.forEach(element => {
+                element.textContent = "";
+            })
+        }
+    </script>
+</body>
+
+</html>
