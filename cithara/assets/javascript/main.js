@@ -137,3 +137,9 @@ const sideBarOverlay = document.querySelector(".side-bar-overlay");
 sideBarOverlay?.addEventListener("click", function() {
   toggleSidebar();
 })
+
+function toggleHelp() {
+  const help = document.querySelector(".help-container");
+
+  help.classList.toggle("active");
+}

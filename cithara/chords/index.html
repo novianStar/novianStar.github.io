@@ -27,7 +27,7 @@
                 <li class="button" onclick="fullscreen()">
                     <span><i class="fa-solid fa-expand"></i></span>
                 </li>
-                <li class="button" onclick="">
+                <li class="button" onclick="toggleHelp()">
                     <span><i class="fa-solid fa-question"></i></span>
                 </li>
             </ul>
@@ -161,11 +161,35 @@
             </div>
         </section>
     </main>
+    <div class="help-container">
+        <div class="close" onclick="toggleHelp()">
+            <span><i class="fa-solid fa-xmark"></i></span>
+        </div>
+        <img src="/cithara/assets/images/hand.png">
+        <ul class="label">
+            <li>
+                <span class="circle red-bg"></span>
+                <span>Index Finger</span>
+            </li>
+            <li>
+                <span class="circle orange-bg"></span>
+                <span>Middle Finger</span>
+            </li>
+            <li>
+                <span class="circle blue-bg"></span>
+                <span>Ring Finger</span>
+            </li>
+            <li>
+                <span class="circle purple-bg"></span>
+                <span>Little Finger</span>
+            </li>
+        </ul>
+    </div>
     <script src="/cithara/assets/javascript/main.js"></script>
     <script src="/cithara/assets/javascript/search.js"></script>
     <script src="/cithara/chords/chord.js"></script>
     <script>
-        
+
         const select = document.querySelectorAll(".chordSelector > div:not(.chordSelection)");
         const selection = document.querySelector(".chordSelection");
 
@@ -310,11 +334,11 @@
                             element.style.backgroundColor = "var(--red)";
                             break;
                         case ("2"):
-                            element.style.backgroundColor = "var(--orange)";                            break;
+                            element.style.backgroundColor = "var(--orange)"; break;
                         case ("3"):
-                            element.style.backgroundColor = "var(--blue)";                            break;
+                            element.style.backgroundColor = "var(--blue)"; break;
                         case ("4"):
-                            element.style.backgroundColor = "var(--purple)";                            break;
+                            element.style.backgroundColor = "var(--purple)"; break;
                         default:
                             break;
                     }
@@ -351,15 +375,15 @@
                             element.style.backgroundColor = "var(--red)";
                             break;
                         case ("2"):
-                            element.style.backgroundColor = "var(--orange)";                            break;
+                            element.style.backgroundColor = "var(--orange)"; break;
                         case ("3"):
-                            element.style.backgroundColor = "var(--blue)";                            break;
+                            element.style.backgroundColor = "var(--blue)"; break;
                         case ("4"):
-                            element.style.backgroundColor = "var(--purple)";                            break;
+                            element.style.backgroundColor = "var(--purple)"; break;
                         default:
                             break;
                     }
-                    
+
                     if (fret >= 0) {
                         strings[fromString][fret].appendChild(element);
                     }

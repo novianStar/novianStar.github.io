@@ -293,7 +293,55 @@ section#song-container > .page.video-container {
     display: grid;
     place-items: center;
 }
-
+.help-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    padding: 4rem 0.5rem 0.5rem 0.5rem;
+    background-color: var(--white);
+    z-index: 1100;
+}
+.help-container.active {
+    display: flex;
+}
+.help-container .close {
+    display: grid;
+    place-items: center;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    min-width: 2.5rem;
+    height: 2.5rem;
+    background-color: var(--shadow-1-4);
+    border-radius: 1.25rem;
+    cursor: pointer;
+    user-select: none;
+}
+.help-container .close:hover {
+    background-color: var(--red);
+}
+.help-container > * {
+    flex: 1;
+}
+.help-container img {
+    object-fit: contain;
+} 
+.help-container > ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 4rem;
+    gap: 1rem
+}
+.help-container > ul > li >.circle {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+}
 
 
 
@@ -306,6 +354,12 @@ section#song-container > .page.video-container {
 }
 .orange-bg {
     background-color: var(--orange);
+}
+.blue-bg {
+    background-color: var(--blue);
+}
+.purple-bg {
+    background-color: var(--purple);
 }
 .white-bg {
     background-color: var(--white);
