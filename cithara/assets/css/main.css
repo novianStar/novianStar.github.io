@@ -68,14 +68,27 @@ section#menu-container > .menu > .trigger {
 section#menu-container > .menu > .trigger.active {
     display: none;
 }
+section#menu-container > .menu > .trigger img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    filter: invert(19%) sepia(16%) saturate(1342%) hue-rotate(195deg) brightness(90%) contrast(95%);
+    transition: all 300ms ease;
+}
 section#menu-container > .menu > .trigger > span {
     font-size: 2rem;
+    -webkit-text-stroke: 1px var(--shadow-1-4);
     display: flex;
     align-items: end;
     justify-content: center;
     width: 100%;
     height: 100%;
     transition: all 300ms ease;
+}
+section#menu-container > .menu > .trigger:hover img {
+    transform: translate(-50%, -50%) scale(1.2);
 }
 section#menu-container > .menu > .trigger:hover > span {
     transform: translateY(-10%) scale(1.2);
@@ -93,17 +106,32 @@ section#menu-container > .menu > .sub-menu.active {
     display: flex;
 }
 section#menu-container > .menu > .sub-menu > li {
+    display: flex;
     flex: 1;
+    justify-content: space-around;
     position: relative;
+    transition: all 300ms ease;
     cursor: pointer;
+}
+section#menu-container > .menu > .sub-menu > li > .image {
+    display: grid;
+    flex: 1;
+    place-items: center;
+    transition: inherit;
+}
+section#menu-container > .menu > .sub-menu > li > .image > img {
+    width: 50%;
+    object-fit: cover;
 }
 section#menu-container > .menu > .sub-menu > li > span {
     display: grid;
+    flex: 1;
     place-items: center;
     height: 100%;
-    transition: all 300ms ease;
+    transition: inherit;
 }
-section#menu-container > .menu > .sub-menu > li > span:hover {
+section#menu-container > .menu > .sub-menu > li:hover > .image, 
+section#menu-container > .menu > .sub-menu > li:hover > span {
     transform: scale(1.2);
 }
 /*
