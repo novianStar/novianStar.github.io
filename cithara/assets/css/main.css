@@ -122,6 +122,7 @@ section#menu-container > .menu > .sub-menu > li > .image {
 section#menu-container > .menu > .sub-menu > li > .image > img {
     width: 50%;
     object-fit: cover;
+    filter: invert(19%) sepia(16%) saturate(1342%) hue-rotate(195deg) brightness(90%) contrast(95%);
 }
 section#menu-container > .menu > .sub-menu > li > span {
     display: grid;
