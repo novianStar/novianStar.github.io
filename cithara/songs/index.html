@@ -168,6 +168,38 @@
         function showResults(element, items) {
             element.textContent = "";
             
+            if (items.length === 0) {
+                // Create a container div element
+                const el = document.createElement("div");
+                el.classList.add("not-found");
+
+                // Create and append the text node "Link a: "
+                const txtA = document.createTextNode("Result not found, try ");
+                el.appendChild(txtA);
+
+                // Create a link element for Link a
+                const google = document.createElement("a");
+                google.setAttribute("class", "google");
+                google.textContent = "Google ";
+                google.href = "https://google.com/search?q=" + input.value;
+                el.appendChild(google);
+
+                // Create and append the text node ", Link b: "
+                const txtB = document.createTextNode("or ");
+                el.appendChild(txtB);
+
+                // Create a link element for Link b
+                const youtube = document.createElement("a");
+                youtube.setAttribute("class", "youtube");
+                youtube.textContent = "Youtube";
+                youtube.href = "https://www.youtube.com/results?search_query=" + input.value;
+                el.appendChild(youtube);
+
+                // Append the container div to the document body or another parent element
+                element.appendChild(el);
+
+            }
+            
             items.forEach(item => {
                 const el = document.createElement("div");
                 el.setAttribute("class", "song");
