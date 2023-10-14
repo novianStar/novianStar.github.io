@@ -91,7 +91,7 @@ function microphone(self, targetElement = undefined, timeout = 10000) {
           }
         })
 
-        targetElement.value = targetElement ? modifiedResult.toString().replaceAll(",", "") : "";
+        targetElement.value = targetElement ? modifiedResult.toString().replaceAll(",",  " ") : "";
         targetElement?.dispatchEvent(new Event('input'));
         
         return result;
