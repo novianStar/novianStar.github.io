@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/hypertension/assets/main.css">
+    <title>Hypertension Analysis</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="top-bar">
+                <div class="wrapper">
+                    <a href="/hypertension/">
+                        <span>Home</span>
+                    </a>
+                    <a href="/hypertension/analysis/">
+                        <span>Analysis</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="main">
+            <h1>ระบบวิเคราะห์ความเสี่ยงโรคความดันโลหิตสูง </h1>
+            <form id="form">
+                <div class="header">กรอกข้อมูลให้ครบถ้วนและสมบูรณ์</div>
+                <!-- Sex -->
+                <div class="radio">
+                    <div class="label">เพศ:</div>
+                    <div class="container">
+                        <label for="male">
+                            <input id="male" name="sex" type="radio" value="male" required>
+                            <span>ชาย</span>
+                        </label>
+                        <label for="female">
+                            <input id="female" name="sex" type="radio" value="female" required>
+                            <span>หญิง</span>
+                        </label>
+                    </div>
+                </div>
+                <!-- Age -->
+                <div class="field">
+                    <input id="age" type="number" placeholder="" required>
+                    <div class="label">อายุ (ปี)</div>
+                </div>
+                <!-- SBP -->
+                <div class="field">
+                    <input id="sbp" type="number" placeholder="" required>
+                    <div class="label">SBP (mm Hg)</div><span>
+                </div>
+                <!-- DBP -->
+                <div class="field">
+                    <input id="dbp" type="number" placeholder="" required>
+                    <div class="label">DBP (mm Hg)</div>
+                </div>
+                <!-- Weight -->
+                <div class="field">
+                    <input id="weight" type="number" placeholder="" required>
+                    <div class="label">น้ำหนัก (กิโลกรัม)</div>
+                </div>
+                <!-- Height -->
+                <div class="field">
+                    <input id="height" type="number" placeholder="" required>
+                    <div class="label">ส่วนสูง (เซนติเมตร)</div>
+                </div>
+                <!-- Smoke -->
+                <div class="checkbox">
+                    <div class="label">สูบบุหรี่: </div>
+                    <input id="smoke" type="checkbox">
+                </div>
+                <!-- Clear and Submit-->
+                <div class="buttons">
+                    <input type="reset" value="ล้างข้อมูล">
+                    <input id="submit" type="submit" value="ยืนยันข้อมูล">
+                </div>
+            </form>
+            <div id="result-container" class="">
+                <h1>ผลลัพธ์</h1>
+                <p id="result"></p>
+            </div>
+        </section>
+    </main>
+    <script src="/hypertension/assets/main.js"></script>
+    <script>
+        const form = document.getElementById("form");
+
+        form.addEventListener("submit", submitForm);
+
+        function submitForm(event) {
+            event.preventDefault();
+
+            let sexValue = "";
+            document.getElementsByName("sex").forEach(element => {
+                if (element.checked) {
+                    sexValue = element.value
+                }
+            });
+
+            const values = {
+                sex: sexValue,
+                age: document.getElementById("age").value,
+                sbp: document.getElementById("sbp").value,
+                dbp: document.getElementById("dbp").value,
+                weight: document.getElementById("weight").value,
+                height: document.getElementById("height").value,
+                smoke: document.getElementById("smoke").checked
+            }
+
+            console.table(values);
+            calculateResult(values);
+        }
+
+        function calculateResult(values) {
+            const resultList = [
+                "เหมาะสม",
+                "ปกติ",
+                "สูงกว่าปกติ",
+                "ความดันโลหิตสูงระดับ 1",
+                "ความดันโลหิตสูงระดับ 2",
+                "ความดันโลหิตสูงระดับ 3",
+                "Isolated systolic hypertension"
+            ];
+
+            const pressure = parseInt(values.sbp);
+
+            if (pressure < 120) {
+                values.result = resultList[0];
+            } else if (pressure < 130) {
+                values.result = resultList[1];
+            } else if (pressure < 140) {
+                values.result = resultList[2];
+            } else if (pressure < 160) {
+                values.result = resultList[3];
+            } else if (pressure < 180) {
+                values.result = resultList[4];
+            } else if (pressure >= 180) {
+                values.result = resultList[5];
+            }
+
+            if (pressure >= 140) {
+                values.result += ", " + resultList[6];
+            }
+
+            showResult(values);
+
+        }
+
+        function showResult(values) {
+            const resultContainer = document.getElementById("result-container");
+
+            resultContainer.classList.add("active");
+
+            const resultElement = resultContainer.querySelector("#result");
+
+            resultElement.textContent = values.result;
+
+            const formElement = document.getElementById("form");
+            formElement.remove();
+        }
+    </script>
+</body>
+
+</html>
