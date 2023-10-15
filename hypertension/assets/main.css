@@ -22,10 +22,10 @@
     --shadow-1-64: rgba(43, 47, 74, 0.01875);
 }
 * {
+    font-family: 'Sarabun', sans-serif;
     box-sizing: border-box;
 }
 body {
-    font-family: 'Sarabun', sans-serif;
     margin: 0;
 }
 a {
@@ -86,8 +86,233 @@ nav .top-bar div.wrapper a.active span::after {
     border: 1px solid var(--blue);
 }
 main {
-
+    padding-top: 3.5rem;
 }
+main > section {
+    position: relative;
+}
+/* Article */
+main > section.article {
+    color: var(--gray);
+    text-align: justify;
+    text-justify: distribute;
+    display: flex;
+    flex-direction: column;
+    min-width: 360px;
+    width: 100%;
+    max-width: 768px;
+    line-height: normal;
+    margin: 0 auto;
+}
+section.article > header {
+    margin: 1rem 1rem 0 1rem;
+}
+section.article > section {
+    margin: 0 1rem;
+}
+section h1,
+section h2,
+section p {
+    margin: 0;
+    margin-bottom: 1rem;
+}
+section.article p {
+    text-indent: 2rem;
+    line-height: 2rem;
+}
+section.article a {
+    color: var(--blue)
+}
+section.article img {
+    width: 100%;
+    max-height: 20rem;
+    object-fit: contain;
+}
+section.article > header p {
+    font-style: italic;
+}
+
+/* Form */
+main > section.form {
+    color: var(--gray);
+    text-align: justify;
+    text-justify: distribute;
+    display: flex;
+    flex-direction: column;
+    min-width: 360px;
+    width: 100%;
+    max-width: 768px;
+    line-height: normal;
+    margin: 0 auto;
+}
+section.form h1 {
+    margin: 1rem;
+}
+section.form h1::after {
+    content: "";
+    display: block;
+    width: 100%;
+    margin: 1rem 0;
+    border: 1px solid var(--blue);
+    border-radius: 0.25rem;
+    opacity: 0.5;
+}
+section.form form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 328px;
+    width: 100%;
+    max-width: 360px;
+    margin: 1rem auto;
+    padding: 1rem;
+    border: 1px solid var(--shadow-1-4);
+    border-radius: 0.25rem;
+}
+section.form form .header {
+    position: absolute;
+    top: -0.75rem;
+    left: 0.75rem;
+    background-color: var(--white);
+    padding: 0 1rem;
+}
+section.form form input {
+    flex: 1;
+}
+section.form form .row {
+    display: flex;
+    margin: 1rem 0;
+    gap: 1rem;
+}
+section.form form .row:last-of-type {
+    margin: 1rem 0 0;
+}
+section.form form .row > * {
+    flex: 1;
+}
+section.form form .row > label {
+    align-self: center;
+}
+section.form form div.field {
+    display: block;
+    position: relative;
+}
+section.form form div.field > input {
+    appearance: none;
+    width: 100%;
+    height: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--shadow-1-8);
+    border-radius: 0.25rem;
+    outline: none;
+}
+section.form form div.field > label {
+    color: var(--gray);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    padding: 0 0.5rem;
+    opacity: 0.5;
+    transition: all 200ms ease;
+    pointer-events: none;
+}
+section.form form div.field > input:focus + label,
+section.form form div.field > input:not(:placeholder-shown) + label {
+    font-size: 0.75rem;
+    top: 0;
+    background-color: var(--white);
+}
+section.form form div.radio {
+    display: flex;
+    gap: 1rem;
+}
+section.form form div.radio .label {
+    align-self: center;
+}
+section.form form div.radio .container {
+    display: flex;
+    flex: 1;
+    border: 1px solid var(--shadow-1-4);
+    border-radius: 0.25rem;
+    overflow: hidden;
+}
+section.form form div.radio .container label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex: 1;
+}
+section.form form div.radio .container label input {
+    appearance: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    transition: all 200ms ease;
+    opacity: 0.75;
+    cursor: pointer;
+}
+section.form form div.radio .container label input:checked {
+    background-color: var(--blue);
+}
+section.form form div.radio .container label span {
+    z-index: 1;
+    cursor: pointer;
+}
+section.form .row .select {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+section.form .row .select select {
+    flex: 1;
+    cursor: pointer;
+}
+section.form select {
+    padding: 0.5rem;
+    background-color: var(--white);
+    border: 1px solid var(--shadow-1-8);
+    border-radius: 0.25rem;
+}
+section.form input[type=reset] {
+    height: 2rem;
+    background-color: transparent;
+    border: 1px solid var(--shadow-1-4);
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+section.form input[type=submit] {
+    height: 2rem;
+    background-color: var(--blue);
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+section.form svg {
+    height: 3rem;
+    margin-bottom: 1rem;
+}
+section.form h2,
+section.form p {
+    text-align: center;
+    margin: 0 1rem 1rem;
+}
+section.form h2 {
+    font-size: 1.25rem;
+}
+section.form p {
+    text-indent: 2rem;
+    line-height: 2rem;
+}
+section.form li {
+    list-style: disc;
+    margin-bottom: 1rem;
+}
+/*
 main section {
     position: relative;
     min-height: 100vh;
@@ -251,7 +476,7 @@ section.main > #result-container.active {
 }
 section.main > #result-container > h1,
 section.main > #result-container > p {
-    margin: 0;
+    margin: 1rem 0;
 }
 section.main > #result-container > h1 {
     font-size: 1.25rem;
@@ -268,3 +493,16 @@ section.main > #result-container > h1::after {
 section.main > #result-container > p {
     font-size: 0.875rem;
 }
+section.main > #result-container > .buttons {
+    display: flex;
+    justify-content: right;
+    height: 2rem;
+}
+section.main > #result-container > .buttons > .reset {
+    padding: 0 1rem;
+    background-color: var(--blue);
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+*/

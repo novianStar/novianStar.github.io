@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sarabun&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/8e7dc2ee26.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/hypertension/assets/main.css">
     <title>Hypertension Analysis</title>
 </head>
@@ -27,64 +28,98 @@
         </nav>
     </header>
     <main>
-        <section class="main">
-            <h1>ระบบวิเคราะห์ความเสี่ยงโรคความดันโลหิตสูง </h1>
+        <section class="form">
+            <h1 id="header">ระบบวิเคราะห์ความเสี่ยงโรคความดันโลหิตสูง </h1>
             <form id="form">
                 <div class="header">กรอกข้อมูลให้ครบถ้วนและสมบูรณ์</div>
-                <!-- Sex -->
-                <div class="radio">
-                    <div class="label">เพศ:</div>
-                    <div class="container">
-                        <label for="male">
-                            <input id="male" name="sex" type="radio" value="male" required>
-                            <span>ชาย</span>
-                        </label>
-                        <label for="female">
-                            <input id="female" name="sex" type="radio" value="female" required>
-                            <span>หญิง</span>
-                        </label>
+                <div class="row">
+                    <!-- Age -->
+                    <div class="field">
+                        <input id="age" name="age" type="number" placeholder="" required>
+                        <label for="age">อายุ</label>
+                    </div>
+                    <!-- Sex -->
+                    <div class="radio">
+                        <div class="label">เพศ:</div>
+                        <div class="container">
+                            <label for="male">
+                                <input id="male" name="sex" type="radio" value="male" required>
+                                <span>ชาย</span>
+                            </label>
+                            <label for="female">
+                                <input id="female" name="sex" type="radio" value="female" required>
+                                <span>หญิง</span>
+                            </label>
+                        </div>
                     </div>
                 </div>
-                <!-- Age -->
-                <div class="field">
-                    <input id="age" type="number" placeholder="" required>
-                    <div class="label">อายุ (ปี)</div>
+                <div class="row">
+                    <!-- SBP -->
+                    <div class="field">
+                        <input id="sbp" type="number" placeholder="" required>
+                        <label for="sbp">SBP</label>
+                    </div>
+                    <!-- DBP -->
+                    <div class="field">
+                        <input id="dbp" type="number" placeholder="" required>
+                        <label>DBP</label>
+                    </div>
                 </div>
-                <!-- SBP -->
-                <div class="field">
-                    <input id="sbp" type="number" placeholder="" required>
-                    <div class="label">SBP (mm Hg)</div><span>
+                <div class="row">
+                    <!-- Weight -->
+                    <div class="field">
+                        <input id="weight" type="number" placeholder="" required>
+                        <label>น้ำหนัก</label>
+                    </div>
+                    <!-- Height -->
+                    <div class="field">
+                        <input id="height" type="number" placeholder="" required>
+                        <label>ส่วนสูง</label>
+                    </div>
                 </div>
-                <!-- DBP -->
-                <div class="field">
-                    <input id="dbp" type="number" placeholder="" required>
-                    <div class="label">DBP (mm Hg)</div>
+                <div class="row">
+                    <div class="select">
+                        <label for="cholesterol">ระดับน้ำตาลในเลือด</label>
+                        <select id="cholesterol">
+                            <option value="normal">ปกติ</option>
+                            <option value="above_normal">สูงกว่าปกติ</option>
+                            <option value="well_above_normal">เกินกำหนด</option>
+                        </select>
+                    </div>
                 </div>
-                <!-- Weight -->
-                <div class="field">
-                    <input id="weight" type="number" placeholder="" required>
-                    <div class="label">น้ำหนัก (กิโลกรัม)</div>
+                <div class="row">
+                    <!-- Smoke -->
+                    <div class="checkbox">
+                        <input id="smoke" type="checkbox">
+                        <label for="smoke">สูบบุหรี่</label>
+                    </div>
+                    <!-- Alcohol -->
+                    <div class="checkbox">
+                        <input id="alcohol" type="checkbox">
+                        <label for="alcohol">ดื่มแอลกอฮอล์</label>
+                    </div>
                 </div>
-                <!-- Height -->
-                <div class="field">
-                    <input id="height" type="number" placeholder="" required>
-                    <div class="label">ส่วนสูง (เซนติเมตร)</div>
+                <div class="row">
+                    <!-- Active -->
+                    <div class="checkbox">
+                        <input id="active" type="checkbox">
+                        <label for="active">ออกกำลังกาย</label>
+                    </div>
                 </div>
-                <!-- Smoke -->
-                <div class="checkbox">
-                    <div class="label">สูบบุหรี่: </div>
-                    <input id="smoke" type="checkbox">
-                </div>
-                <!-- Clear and Submit-->
-                <div class="buttons">
+                <!-- Clear and Submit -->
+                <div class="row">
                     <input type="reset" value="ล้างข้อมูล">
                     <input id="submit" type="submit" value="ยืนยันข้อมูล">
                 </div>
             </form>
-            <div id="result-container" class="">
-                <h1>ผลลัพธ์</h1>
-                <p id="result"></p>
-            </div>
+            <i id="check" class="fa-solid fa-circle-check" style="display: none; color: var(--green)"></i>
+            <i id="warn" class="fa-solid fa-circle-exclamation" style="display: none; color: var(--red)"></i>
+            <h2 id="result"></h2>
+            <p id="description"></p>
+            <ul id="list">
+
+            </ul>
+            <p id="footer"></p>
         </section>
     </main>
     <script src="/hypertension/assets/main.js"></script>
@@ -99,70 +134,159 @@
             let sexValue = "";
             document.getElementsByName("sex").forEach(element => {
                 if (element.checked) {
-                    sexValue = element.value
+                    sexValue = element.value.toLowerCase();
                 }
             });
 
             const values = {
+                age: parseInt(document.getElementById("age").value),
                 sex: sexValue,
-                age: document.getElementById("age").value,
-                sbp: document.getElementById("sbp").value,
-                dbp: document.getElementById("dbp").value,
-                weight: document.getElementById("weight").value,
-                height: document.getElementById("height").value,
-                smoke: document.getElementById("smoke").checked
+                sbp: parseFloat(document.getElementById("sbp").value),
+                dbp: parseFloat(document.getElementById("dbp").value),
+                weight: parseFloat(document.getElementById("weight").value),
+                height: parseFloat(document.getElementById("height").value),
+                cholesterol: document.getElementById("cholesterol").value,
+                smoke: document.getElementById("smoke").checked,
+                alcohol: document.getElementById("alcohol").checked,
+                active: document.getElementById("active").checked
             }
+            values.cholesterol = values.cholesterol.toLowerCase();
 
             console.table(values);
             calculateResult(values);
         }
 
         function calculateResult(values) {
-            const resultList = [
-                "เหมาะสม",
-                "ปกติ",
-                "สูงกว่าปกติ",
-                "ความดันโลหิตสูงระดับ 1",
-                "ความดันโลหิตสูงระดับ 2",
-                "ความดันโลหิตสูงระดับ 3",
-                "Isolated systolic hypertension"
-            ];
+            let result = false;
 
-            const pressure = parseInt(values.sbp);
-
-            if (pressure < 120) {
-                values.result = resultList[0];
-            } else if (pressure < 130) {
-                values.result = resultList[1];
-            } else if (pressure < 140) {
-                values.result = resultList[2];
-            } else if (pressure < 160) {
-                values.result = resultList[3];
-            } else if (pressure < 180) {
-                values.result = resultList[4];
-            } else if (pressure >= 180) {
-                values.result = resultList[5];
+            if (values.age < 35) {
+                if (values.sbp < 125) {
+                    result = false;
+                } else if (values.sbp >= 125) {
+                    if (values.sbp < 135) {
+                        if (values.dbp < 85) {
+                            if (values.alcohol === false) {
+                                if (values.active === false) {
+                                    result = false;
+                                } else if (values.active === true) {
+                                    if (values.sex === "female") {
+                                        result = false;
+                                    } else if (values.sex === "male") {
+                                        if (age < 24) {
+                                            result = false;
+                                        } else if (age >= 24) {
+                                            result = true;
+                                        }
+                                    }
+                                }
+                            } else if (values.alcohol === true) {
+                                result = true;
+                            }
+                        } else if (values.dbp >= 85) {
+                            result = true;
+                        } 
+                    } else if (values.sbp >= 135) {
+                        result = true;
+                    }
+                }
+            } else if (values.age >= 35) {
+                if (values.weight < 65.5) {
+                    if (values.height < 161) {
+                        result = true;
+                    } else if (values.height >= 161) {
+                        if (values.sbp < 125) {
+                            result = false;
+                        } else if (values.sbp >= 125) {
+                            if(values.dbp < 70) {
+                                if (values.age < 68) {
+                                    result = true;
+                                } else if (values.age >= 68) {
+                                    result = false;
+                                }
+                            } else if (values.dbp >= 70) {
+                                result = true;
+                            }
+                        }
+                    }
+                } else if (values.weight >= 65.5) {
+                    if (values.age < 42) {
+                        result= false;
+                    } else if (values.age >= 42) {
+                        if (values.age < 57.5) {
+                            if (values.cholesterol === "normal") {
+                                if (values.sbp < 130) {
+                                    result = false;
+                                } else if (values.sbp >= 130) {
+                                    result = true;
+                                }
+                            } else if (values.cholesterol === "above_normal") {
+                                result = true;
+                            }
+                        } else if (values.age >= 57.5) {
+                            if (values.height < 190) {
+                                result = false;
+                            } else if (values.height >= 190) {
+                                result = true;
+                            }
+                        }
+                    }
+                }
             }
 
-            if (pressure >= 140) {
-                values.result += ", " + resultList[6];
-            }
-
+            values.result = result;
+            console.table(values);
             showResult(values);
-
         }
 
         function showResult(values) {
-            const resultContainer = document.getElementById("result-container");
+            const icon = values.result ? 
+                document.getElementById("warn") : document.getElementById("check");
+            icon.style.display = "block";
 
-            resultContainer.classList.add("active");
+            const header = document.getElementById("header");
+            header.textContent = "ผลลัพธ์ความเสี่ยงโรคความดันโลหิสูง"
 
-            const resultElement = resultContainer.querySelector("#result");
-
-            resultElement.textContent = values.result;
+            const resultElement = document.getElementById("result");
+            resultElement.style.display = "block";
+            resultElement.textContent = values.result ? 
+                "ความเสี่ยงสูง" : "ความเสี่ยงต่ำ";
+            resultElement.style.color = values.result ?
+                "var(--red)" : "var(--green)";
 
             const formElement = document.getElementById("form");
-            formElement.remove();
+            formElement.style.display = "none";
+
+            const description = document.getElementById("description");
+            description.textContent = values.result ?
+                "จากข้อมูล มีความเสี่ยงสูงในการเป็นโรคความดันโลหิตสูง ควรปฏิบัติดังนี้" :
+                "จากข้อมูล มีความเสี่ยงต่ำในการเป็นโรคความดันโลหิตสูง แต่ไม่ปล่อยปะละเลยการดูแลสุขภาพ";
+
+            const ul = document.getElementById("list");
+
+            if (values.cholesterol === "above_normal" || values.cholesterol === "well_above_normal") {
+                const e = document.createElement("li");
+                e.textContent = "ลดปริมาณการบริโภคน้ำตาล";
+                ul.appendChild(e);
+            } 
+            if (values.smoke) {
+                const e = document.createElement("li");
+                e.textContent = "ลดการสูบบุหรี่ในปริมาณมาก";
+                ul.appendChild(e);
+            }
+            if (values.alcohol) {
+                const e = document.createElement("li");
+                e.textContent = "ลดการดื่มเครื่องดื่มแอลกอฮอล์";
+                ul.appendChild(e);
+            }
+            if (!values.active) {
+                const e = document.createElement("li");
+                e.textContent = "หมั่นออกกำลังกายเป็นประจำ";
+                ul.appendChild(e);
+            }
+
+            const footer = document.getElementById("footer");
+            footer.textContent = 
+            "ทั้งนี้ หมั่นดูแลสุขภาพ หากรู้สึกเจ็บไข้ ควรเข้ารับการปรึกษาจากแพทย์ เพื่อป้องกันการเป็นโรคความดันโลหิตสูงในอนาคต เพราะโรคความดันโลหิตเป็นภัยเงียบที่ยากจะรู้ตัวในทันที"
         }
     </script>
 </body>
