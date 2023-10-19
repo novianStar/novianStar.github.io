@@ -201,13 +201,17 @@
                 const img = document.createElement("img");
                 img.setAttribute("src", `/cithara/songs/images/${ item.id }.jpg`);
                 const detail= document.createElement("div");
-                detail.classList.add("detai;");
+                detail.classList.add("detail");
+                const id = document.createElement("i");
+                id.classList.add("id");
+                id.textContent = `#${ item.id }`;
                 const name = document.createElement("div");
                 name.classList.add("name");
                 name.textContent = item.name;
                 const author = document.createElement("div");
                 author.classList.add("artist");
                 author.textContent = item.author;
+                detail.appendChild(id);
                 detail.appendChild(name);
                 detail.appendChild(author);
                 el.appendChild(img);

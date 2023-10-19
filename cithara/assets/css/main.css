@@ -196,8 +196,12 @@ section#songlist .list > .song > .detail {
     display: block;
     flex: 1;
 }
+section#songlist .list > .song > .detail > .id {
+    font-size: 0.75rem;
+    color: var(--shadow-1-2);
+}
 section#songlist .list > .song > .detail > .name {
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight: bold;
 }
 section#songlist .list > .song > .detail > .artist {
