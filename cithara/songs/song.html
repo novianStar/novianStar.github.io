@@ -36,9 +36,6 @@
                 <li class="button" onclick="fullscreen()">
                     <span><i class="fa-solid fa-expand"></i></span>
                 </li>
-                <li class="button">
-                    <span><i class="fa-solid fa-question"></i></span>
-                </li>
             </ul>
         </div>
     </nav>
@@ -58,6 +55,7 @@
                 </div>
                 <div class="main">
                     <div>
+                        <i class="id-container">#<span id="id"></span></i>
                         <h1 id="title"></h1>
                         <h2 id="author"></h2>
                     </div>
@@ -90,6 +88,7 @@
             document.title = `Cithara - ${ song.name }`;
 
             const imageElement = document.querySelector("#image");
+            const idElement = document.querySelector("#id");
             const nameElement = document.querySelector("#title");
             const authorElement = document.querySelector("#author");
             const googleElement = document.querySelector("#google");
@@ -100,6 +99,7 @@
             const lyricElement = document.querySelector("#lyric");
 
             imageElement.src = `/cithara/songs/images/${ id }.jpg`;
+            idElement.textContent = song.id;
             nameElement.textContent = song.name;
             authorElement.textContent = song.author;
             googleElement.href = `https://www.google.com/search?q=${ song.name }`;

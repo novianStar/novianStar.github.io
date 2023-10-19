@@ -274,6 +274,9 @@ section#song-container > .page.overview > .side > .links > a {
 section#song-container > .page.overview > .side > .links > a > img {
     width: 100%;
 }
+section#song-container > .page.overview > .main .id-container {
+    color: var(--shadow-1-2);
+}
 section#song-container > .page.overview > .main #title {
     font-size: 2rem;
     font-weight: bold;
