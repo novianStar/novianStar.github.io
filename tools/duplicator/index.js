@@ -37,7 +37,7 @@ const drawImage = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(image, 0, 0, image.width, image.height, 0, 0, canvas.width, canvas.height);
     ctx.fillText(Name, 55, 420)
-    ctx.fillText(address, 55, 7000)
+    ctx.fillText(address, 55, 714)
     ctx.fillText(post, 55, 826);
     ctx.fillText(province, 55, 934);
     ctx.fillText(phone, 55, 1120);
