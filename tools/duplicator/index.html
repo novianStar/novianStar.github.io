@@ -15,10 +15,18 @@
         font-family: 'Prompt';
     }
 </style>
-<body>
-    <main class="container pt-3">
-        <div class="p-3 border rounded shadow-sm">
-            <form class="d-flex flex-column gap-3">
+
+<body style="background-color: #f0f0f0;">
+    <main class="d-flex flex-column container pt-3 gap-3" style="max-width: 640px;">
+        <div class="d-flex flex-column bg-white border rounded shadow-sm overflow-hidden">
+            <div class="bg-primary" style="height: 8px"></div>
+            <div class="fs-4 p-3 border-bottom">ภาพตัวอย่าง</div>
+            <img id="preview" class="m-3 border object-cover" src=""></img>
+        </div>
+        <div class="bg-white border rounded shadow-sm overflow-hidden">
+            <div class="bg-primary" style="height: 8px"></div>
+            <div class="fs-4 p-3 border-bottom">ข้อมูล</div>
+            <form class="d-flex flex-column p-3 gap-3">
                 <div>
                     <label class="form-label">ชื่อ</label>
                     <input id="name" class="form-control" type="text">
@@ -39,18 +47,29 @@
                     <label class="form-label">เบอร์โทรศัพท์</label>
                     <input id="phone" class="form-control" type="text">
                 </div>
-                <div>
-                    <label class="form-label">ร้านค้า</label>
-                    <input id="store" class="form-control" type="text">
+                <div class="d-flex flex-wrap align-items-center">
+                    <label class="form-label col-12">ร้านค้า</label>
+                    <div class="form-check form-check-inline col">
+                        <input class="form-check-input" name="store" type="radio" value="T17" checked
+                            onchange="storeCheck(event)">
+                        <label class="form-check-label">T17</label>
+                    </div>
+                    <div class="form-check form-check-inline col">
+                        <input class="form-check-input" name="store" type="radio" value="store-misc"
+                            onchange="storeCheck(event)">
+                        <label class="form-check-label">อื่น ๆ</label>
+
+                    </div>
+                    <div class="d-inline-block">
+                        <input id="store" class="form-control" type="text" disabled>
+                    </div>
                 </div>
                 <button id="submit" class="btn btn-primary" type="button">บันทึก</button>
-                <button class="btn btn-outline-danger" type="reset">ล้าง</button>
+                <button id="reset" class="btn btn-outline-danger" type="reset">ล้าง</button>
             </form>
-            <canvas id="canvas" class="d-none" width="828" height="1624">
-            </canvas>
             <a id="link" class="d-none">link</a>
         </div>
-
+        <canvas id="canvas" class="d-none" width="828" height="1624"></canvas>
     </main>
     <script src="index.js"></script>
 </body>
