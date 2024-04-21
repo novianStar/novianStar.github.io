@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
+</head>
+<style>
+    body {
+        font-family: 'Prompt';
+    }
+</style>
+
+<body style="background-color: #f0f0f0;">
+    <main class="d-flex flex-column container pt-3 gap-3" style="max-width: 640px;">
+        <div class="d-flex flex-column bg-white border rounded shadow-sm overflow-hidden">
+            <div class="bg-primary" style="height: 8px"></div>
+            <div class="fs-4 p-3 border-bottom">ภาพตัวอย่าง</div>
+            <img id="preview" class="m-3 border object-cover" src=""></img>
+        </div>
+        <div class="bg-white border rounded shadow-sm overflow-hidden">
+            <div class="bg-primary" style="height: 8px"></div>
+            <div class="fs-4 p-3 border-bottom">ข้อมูล</div>
+            <form class="d-flex flex-column p-3 gap-3">
+                <div>
+                    <label class="form-label">ชื่อ</label>
+                    <input id="name" class="form-control" type="text">
+                </div>
+                <div>
+                    <label class="form-label">ที่อยู่</label>
+                    <input id="address" class="form-control" type="text">
+                </div>
+                <div>
+                    <label class="form-label">รหัสไปรษณีย์</label>
+                    <input id="post" class="form-control" type="text">
+                </div>
+                <div>
+                    <label class="form-label">จังหวัด</label>
+                    <input id="province" class="form-control" type="text">
+                </div>
+                <div>
+                    <label class="form-label">เบอร์โทรศัพท์</label>
+                    <input id="phone" class="form-control" type="text">
+                </div>
+                <div class="d-flex flex-wrap align-items-center">
+                    <label class="form-label col-12">ร้านค้า</label>
+                    <div class="form-check form-check-inline col">
+                        <input class="form-check-input" name="store" type="radio" value="T17" checked
+                            onchange="storeCheck(event)">
+                        <label class="form-check-label">T17</label>
+                    </div>
+                    <div class="form-check form-check-inline col">
+                        <input class="form-check-input" name="store" type="radio" value="store-misc"
+                            onchange="storeCheck(event)">
+                        <label class="form-check-label">อื่น ๆ</label>
+
+                    </div>
+                    <div class="d-inline-block">
+                        <input id="store" class="form-control" type="text" disabled>
+                    </div>
+                </div>
+                <button id="submit" class="btn btn-primary" type="button">บันทึก</button>
+                <button id="reset" class="btn btn-outline-danger" type="reset">ล้าง</button>
+            </form>
+            <a id="link" class="d-none">link</a>
+        </div>
+        <canvas id="canvas" class="d-none" width="828" height="1624"></canvas>
+    </main>
+    <script src="index.js"></script>
+</body>
+
+</html>
